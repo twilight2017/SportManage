@@ -1,6 +1,7 @@
 # SportManage
+a Web system to manage athletic competition<br>
 ## 来自小组合作的软件工程大作业
-## a Web system to manage athletic competition<br>
+
 # 需求分析
 ## <br>1. 引言<br>
 1.1. 编写目的<br>
