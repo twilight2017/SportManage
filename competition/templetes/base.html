@@ -1,0 +1,96 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>导航栏</title>
+        <style>
+            body{
+                width: 1000px;
+                margin: 0 auto;
+                background-color:rgb(255, 255, 255);
+            }
+            /*头部样式：学校图徽、实验平台名字*/
+            .d{
+                width: 1000px;
+                margin: 10px 0px 0px 0px ;
+                
+            }
+            .header{
+                width: 1000px;
+                height: 100px;
+                margin: 0;
+                background-color: rgb(59, 108, 165);
+            }
+            .logo{
+                display: inline-block;
+                width: auto;
+                height: 100px;
+            }
+            .n{
+                font-size: 35px;
+                text-align: center;
+                margin: 0 auto;
+                display: inline-block ;
+                position: relative;
+                top: -40px;
+                left: 180px;
+                font-family: "STHupo";
+                color: rgb(255, 255, 255);
+                -webkit-text-stroke: 2px black;
+                text-shadow: 3px 4px 10px white; 
+                font-weight:bold;
+                letter-spacing: 8px;
+
+            }
+           .logout{
+                float:right;
+                margin-top: 75px;
+                margin-right: 10px;
+                color: white;
+                text-decoration:none
+           }
+            
+            .daohang{
+                display: flex;
+                width: 1000px;
+                height: 40px;
+                background-color:rgb(95, 164, 204);
+                
+                
+            }
+            .daohang_a {
+                color: rgb(231, 208, 208);
+                text-decoration: none;
+                width: 200px;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 6.5px;
+            }
+            #daohang_a:hover{
+                color: rgb(253, 160, 54);
+                background-color: rgb(40, 173, 250);
+                
+            }
+            .logout:hover{
+                color: red;
+            }
+            #now_xuanxiang{
+                background-color: rgb(40, 173, 250);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d">
+            <div class="header">
+                <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
+                <p class="n">北京科技大学赛事管理平台</p>
+                <a href="login.html" class="logout">退出登陆</a>
+            </div>
+            <div class="daohang">
+                <a href = ""  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href={% url 'USERPAGE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'REPORT' %} id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a href={% url 'CHOICE' %} id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a href={% url 'DOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
+            </div>
+            
+        </div>
+        
+    </body>
+</html>

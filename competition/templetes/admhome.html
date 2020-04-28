@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>首页</title>
+        <style>
+            body{
+                width: 1000px;
+                margin: 0 auto;
+                background-color:rgb(255, 255, 255);
+            }
+            /*头部样式：学校图徽、实验平台名字*/
+            .d{
+                width: 1000px;
+                margin: 10px 0px 0px 0px ;
+                
+            }
+            .header{
+                width: 1000px;
+                height: 100px;
+                margin: 0;
+                background-color: rgb(59, 108, 165);
+            }
+            .logo{
+                display: inline-block;
+                width: auto;
+                height: 100px;
+            }
+            .n{
+                font-size: 35px;
+                text-align: center;
+                margin: 0 auto;
+                display: inline-block ;
+                position: relative;
+                top: -40px;
+                left: 180px;
+                font-family: "STHupo";
+                color: rgb(255, 255, 255);
+                -webkit-text-stroke: 2px black;
+                text-shadow: 3px 4px 10px white; 
+                font-weight:bold;
+                letter-spacing: 8px;
+
+            }
+           .logout{
+                float:right;
+                margin-top: 75px;
+                margin-right: 10px;
+                color: white;
+                text-decoration:none;
+
+           }
+            
+            .daohang{
+                display: flex;
+                width: 1000px;
+                height: 40px;
+                background-color:rgb(95, 164, 204);
+                
+                
+            }
+            .daohang_a {
+                color: rgb(231, 208, 208);
+                text-decoration: none;
+                width: 250px;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 6.5px;
+            }
+            #daohang_a:hover{
+                color: rgb(253, 160, 54);
+                background-color: rgb(40, 173, 250);
+                
+            }
+            .logout:hover{
+                color: red;
+
+            }
+            #now_xuanxiang{
+                background-color: rgb(40, 173, 250);
+            }
+            .third{
+                width: 1000px;
+                margin-top: 20px;
+                height: 500px;
+                display: grid;
+            }
+            .third_left{
+                width: 680px;
+                margin-right: 20px;
+                height: 500px;
+                /*background-color: rgb(195, 228, 247);**/
+                
+            }
+            .gonggao{
+                width: 580px;
+                font-size: 25px;
+                margin: 0;
+                position: relative;
+                left: 50px;
+                top:5px;
+                padding-bottom: 5px;
+                border-bottom-style: double;
+                border-bottom-width: 8px;
+                letter-spacing: 3px;
+            }
+            
+            .third_right{
+                width: 300px;
+                height: 480px;
+                position: relative;
+                left: 700px;
+                top:-500px;
+                background-color: white;
+                /*border: 1px solid rgb(161, 162, 163);*/
+                box-shadow: 0px 0px 4px 0px rgb(146, 146, 146) ;
+                text-align: center;
+            }
+            .touxiang{
+                width: 150px;
+                height: 150px;
+                margin-top: 100px;
+                padding-bottom: 20px;
+                padding-left: 50px;
+                padding-right: 50px;
+                border-bottom: 0.5px solid rgb(161, 162, 163);
+                
+            }
+            textarea{
+                margin-top: 5px;
+            }
+            button{
+                margin-top: 10px;
+                width: 80px;
+                height: 30px;
+
+            }
+            table{
+                margin-left: 49px;
+                margin-top:10px;
+            }
+            a{
+                text-decoration: none;
+            }
+            .table_a:hover{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d">
+            <div class="header">
+                <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
+                <p class="n">北京科技大学赛事管理平台</p>
+                <a href="login.html" class="logout">退出登陆</a>
+            </div>
+            <div class="daohang">
+                <a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href={% url 'TCHREPORT' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'TCHCHOICE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'TCHDOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
+            </div>
+            
+        </div>
+        <div class="third">
+                <div class="third_left">
+                    <p class="gonggao">公告</p>
+                    <table>
+                        <tbody>
+                            <tr><td><a href="" class="table_a"></a></td></tr>
+                            <!--该处超链接到具体公告信息-->>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="third_right">
+                    <img src="../static/img/timg.jpg" %}" class="touxiang" alt="头像"/>
+                    <textarea liuyan="liuyan" type="liuiyan"placeholder="请输入您想发布的公告" ></textarea>
+                    <div>
+                        <button type="submit">发布</button>
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>
