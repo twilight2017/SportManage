@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>比赛管理</title>
+        <style>
+            body{
+                width: 1000px;
+                margin: 0 auto;
+                background-color:rgb(255, 255, 255);
+            }
+            /*头部样式：学校图徽、实验平台名字*/
+            .d{
+                width: 1000px;
+                margin: 10px 0px 0px 0px ;
+                
+            }
+            .header{
+                width: 1000px;
+                height: 100px;
+                margin: 0;
+                background-color: rgb(59, 108, 165);
+            }
+            .logo{
+                display: inline-block;
+                width: auto;
+                height: 100px;
+            }
+            .n{
+                font-size: 35px;
+                text-align: center;
+                margin: 0 auto;
+                display: inline-block ;
+                position: relative;
+                top: -40px;
+                left: 180px;
+                font-family: "STHupo";
+                color: rgb(255, 255, 255);
+                -webkit-text-stroke: 2px black;
+                text-shadow: 3px 4px 10px white; 
+                font-weight:bold;
+                letter-spacing: 8px;
+
+            }
+           .logout{
+                float:right;
+                margin-top: 75px;
+                margin-right: 10px;
+                color: white;
+                text-decoration:none;
+
+           }
+            
+            .daohang{
+                display: flex;
+                width: 1000px;
+                height: 40px;
+                background-color:rgb(95, 164, 204);
+                
+                
+            }
+            .daohang_a {
+                color: rgb(231, 208, 208);
+                text-decoration: none;
+                width: 250px;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 6.5px;
+            }
+            #daohang_a:hover{
+                color: rgb(253, 160, 54);
+                background-color: rgb(40, 173, 250);
+                
+            }
+            .logout:hover{
+                color: red;
+
+            }
+            #now_xuanxiang{
+                background-color: rgb(40, 173, 250);
+            }
+            .third{
+                display: flex;
+                margin-top: 20px;
+                background-color: rgb(194, 226, 245);
+                
+            }
+            .jiacu{
+                position:relative;
+                height:40px;
+                left:10px;
+                text-align:center;
+                font-weight: 900;
+                font-size:18px;
+
+            }
+            .jiacu1{
+                position:relative;
+                height:40px;
+                left:10px;
+                text-align:left;
+                font-weight: 900;
+                font-size:18px;
+
+            }
+            .third_left{
+                width: 300px;
+                height: 580px;
+                box-sizing: border-box;
+                border-right: 1px solid rgb(161, 163, 165);
+                text-align: center;
+            }
+            .third_right{
+                width: 700px;
+                height: 800px;
+                
+                text-align: center;
+            }
+
+            .tableStyle{
+                position: relative;
+                letter-spacing: 2px;
+                left:15px;
+            }
+            .button1
+            {
+                font-size:18px;
+                position:relative;
+                width:150px;
+                height:30px;
+                top:-550px;
+                left:10px;
+            }
+            .button2
+            {
+                font-size:18px;
+                position:relative;
+                width:150px;
+                height:30px;
+                top:-530px;
+                left:10px;
+            }
+            .button3
+            {
+                font-size:12px;
+                width:50px;
+                height:20px;
+            }
+            .button4
+            {
+                position:relative;
+                top:-70px;
+                left:250px;
+                font-size:18px;
+                width:90px;
+                height:50px;
+            }
+            .text1
+            {
+            position:relative;
+                left:30px;
+                top:-2px;
+                text-align: center;
+            }
+            .name
+            {
+                font-size:30px;
+                letter-spacing:5px;
+                position: relative;
+                top:40px;
+                font-weight:bold;
+            }
+            .tableStyle1
+            {
+                position: relative;
+                top:50px;
+                left:70px;
+            }
+            .third_plus
+            {
+                border-bottom-style:solid; 
+                border-bottom-color:rgb(161, 163, 165);
+                border-bottom-width:1px;
+            }
+            .te3
+            {
+                position:relative;
+                width:30px;
+            }
+            .add{
+                margin-left: 600px;
+                text-decoration:none;
+                color: black;
+            }
+            .add:hover{
+                color: red;
+            }
+            .img1{
+                width: 20px;
+
+            }
+            table
+            {
+                border-collapse:collapse;
+                margin: auto;
+
+            }
+
+            table,th, td
+            {
+                border: 1px solid black;
+            }
+            hr{
+                width: 600px;
+            }
+            </style>
+            </head>
+            <body>
+                <div class="d">
+                    <div class="header">
+                        <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
+                        <p class="n">北京科技大学赛事管理平台</p>
+                        <a href="login.html" class="logout">退出登陆</a>
+                    </div>
+                    <div class="daohang">
+                        <a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'TCHREPORT' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'TCHCHOICE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'TCHDOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
+                    </div>
+                    
+                </div>
+            <div class="third">
+        <div class="third_left">
+            <p class="jiacu">当前学期：</p>
+            <p class="third_left">2018-2019第二学期</p>
+
+
+        </div>
+        <div class="third_right">
+
+		    <h2>已发布赛事</h2>
+            <div>
+                <a href="{% url 'ADD' %}" class="add">新增</a>
+            </div>
+            <hr>
+           <table class="table1">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>赛事名称</th>
+                    <th>初赛时间</th>
+                    <th>决赛时间</th>
+                    <th>承办学院</th>
+                    <th>已报人数</th>
+                    <th>删除</th>
+                    <th>修改</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <th>北京科技大学数学竞赛</th>
+                    <th>4月12日</th>
+                    <th>5月31日</th>
+                    <th>数理学院</th>
+                    <th>57</th>
+                    <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
+                    <th><img src="../static/img/xiugai.png" class="img1" alt="add"/></th>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <th>北京科技大学英语演讲比赛</th>
+                    <th>4月12日</th>
+                    <th>5月31日</th>
+                    <th>外国语学院</th>
+                    <th>97</th>
+                    <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
+                    <th><img src="../static/img/xiugai.png" class="img1" alt="add"/></th>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <th>北京科技大学算法能力竞赛</th>
+                    <th>4月12日</th>
+                    <th>5月31日</th>
+                    <th>计通学院</th>
+                    <th>32</th>
+                    <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
+                    <th><img src="../static/img/xiugai.png" class="img1" alt="add"/></th>
+                </tr>
+                </tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

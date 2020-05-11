@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8"/>
-        <title>个人信息</title>
+        <title>导航栏</title>
         <style>
             body{
                 width: 1000px;
@@ -78,84 +78,51 @@
                 background-color: rgb(40, 173, 250);
             }
             .third{
-                width: 1000px;
-                margin-top: 20px;
-                height: 500px;
-                display: grid;
-                background-color: rgb(195, 228, 247);
+        display: flex;
+        margin-top: 20px;
+        background-color: rgb(194, 226, 245);
+        
+    }
+    .jiacu{
+        position:relative;
+        height:40px;
+        text-align: center;
+        font-weight: 900;
+        font-size:18px;
 
-            }
-            .touxiang{
-                width: 150px;
-                height: 150px;
-                margin-top: 110%;
-                padding-bottom: 20px;
-                padding-left: 50px;
-                padding-right: 50px;
-                border-bottom: 0.5px solid rgb(161, 162, 163);
-                
-            }
-            .third_left{
-                width: 680px;
-                margin-right: 20px;
-                height: 500px;
-                /*background-color: rgb(195, 228, 247);**/
-                
-            }
-            .xinxi{
-                margin: 0 ;
-                position: relative;
-                left: 200px;
-                top:100px;
-                font-size: 25px;
-                font-family: SimSun;
-            }
-            .grmm{
-                font-size: 20px;
-            }
-            .bcan{
-                font-size: 20px;
-                width: 100px;
-                height: 50px;
-                position: relative;
-                left: 50px;
-                top:20px;
-            }
-            .gonggao{
-                width: 580px;
-                font-size: 25px;
-                margin: 0;
-                position: relative;
-                left: 50px;
-                top:5px;
-                padding-bottom: 5px;
-                border-bottom-style: double;
-                border-bottom-width: 8px;
-                letter-spacing: 3px;
-            }
-            .third_right{
-                width: 300px;
-                height: 480px;
-                position: relative;
-                left: 700px;
-                top:-500px;
-                /*border: 1px solid rgb(161, 162, 163);*/
-                box-shadow: none ;
-                text-align: center;
-            }
-            .tab{
-                width: 580px;
-                font-size: 20px;
-                font-family: "SimSun";
-                margin: 0;
-                position: relative;
-                left: -18%;
-                top:5px;
-                padding-bottom: 5px;
-                letter-spacing: 3px;
-                border-spacing: 8px;
-            }
-                    </style>
+    }
+    .third_left{
+        width: 300px;
+        height: 580px;
+        box-sizing: border-box;
+        border-right: 1px solid rgb(161, 163, 165);
+        text-align: center;
+    }
+    .third_right{
+        width: 700px;
+        height: 800px;
+        
+        text-align: center;
+    }
+    table
+    {
+        border-collapse:collapse;
+        margin: auto;
+
+    }
+
+    table,th, td
+    {
+        border: 1px solid black;
+    }
+    a{
+        color:black;
+        text-decoration:none;
+    }
+    #push:hover{
+        color: red;
+    }
+        </style>
     </head>
     <body>
         <div class="d">
@@ -169,27 +136,58 @@
             </div>
             
         </div>
-
- <div class="third">
-
-    <div class="third-left">
-        <p class="gonggao">个人信息</p>
-        <table border="0" class="tab">
-            <tbody>
-                <tr><th>姓名：</th><td></td></tr>
-                <tr><th>学号：</th><td></td></tr>
-                <tr><th>性别：</th><td></td></tr>
-                <tr><th>学院：</th><td></td></tr>
-                <tr><th>班级：</th><td></td></tr>
-            </tbody>
-        </table>
+        <div class="third">
+            <div class="third_left">
+                <p class="jiacu">当前学期：</p>
+                <p >2018-2019第二学期</p>
+    
+                           
+            </div>
+            <div class="third_right">
+                <p class="jiacu">赛事列表</p>
+                <table class="table1">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>赛事名称</th>
+                            <th>初赛时间</th>
+                            <th>决赛时间</th>
+                            <th>承办学院</th>
+                            <th>已报人数</th>
+                            <th>我要报名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <th>北京科技大学数学竞赛</th>
+                            <th>4月12日</th>
+                            <th>5月31日</th>
+                            <th>数理学院</th>
+                            <th>57</th>
+                            <th><button>报名</button></th>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <th>北京科技大学英语演讲比赛</th>
+                            <th>4月12日</th>
+                            <th>5月31日</th>
+                            <th>外国语学院</th>
+                            <th>97</th>
+                            <th><button>报名</button></th>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <th>北京科技大学算法能力竞赛</th>
+                            <th>4月12日</th>
+                            <th>5月31日</th>
+                            <th>计通学院</th>
+                            <th>32</th>
+                            <th><button>报名</button></th>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
         </div>
-        <div class="third_right">
-            <img src="../static/img/timg.jpg"  class="touxiang" alt="头像"/>
-            <div class="name">
-                <p class="Name">参赛人员</p><p class="Name"></p>
-            </div>           
-        </div>
-    </div>
-</body>
+    </body>
 </html>

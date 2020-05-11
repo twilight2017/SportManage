@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>导航栏</title>
+        <style>
+            body{
+                width: 1000px;
+                margin: 0 auto;
+                background-color:rgb(255, 255, 255);
+            }
+            /*头部样式：学校图徽、实验平台名字*/
+            .d{
+                width: 1000px;
+                margin: 10px 0px 0px 0px ;
+                
+            }
+            .header{
+                width: 1000px;
+                height: 100px;
+                margin: 0;
+                background-color: rgb(59, 108, 165);
+            }
+            .logo{
+                display: inline-block;
+                width: auto;
+                height: 100px;
+            }
+            .n{
+                font-size: 35px;
+                text-align: center;
+                margin: 0 auto;
+                display: inline-block ;
+                position: relative;
+                top: -40px;
+                left: 180px;
+                font-family: "STHupo";
+                color: rgb(255, 255, 255);
+                -webkit-text-stroke: 2px black;
+                text-shadow: 3px 4px 10px white; 
+                font-weight:bold;
+                letter-spacing: 8px;
+
+            }
+           .logout{
+                float:right;
+                margin-top: 75px;
+                margin-right: 10px;
+                color: white;
+                text-decoration:none;
+
+           }
+            
+            .daohang{
+                display: flex;
+                width: 1000px;
+                height: 40px;
+                background-color:rgb(95, 164, 204);
+                
+                
+            }
+            .daohang_a {
+                color: rgb(231, 208, 208);
+                text-decoration: none;
+                width: 250px;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 6.5px;
+            }
+            #daohang_a:hover{
+                color: rgb(253, 160, 54);
+                background-color: rgb(40, 173, 250);
+                
+            }
+            .logout:hover{
+                color: red;
+
+            }
+            #now_xuanxiang{
+                background-color: rgb(40, 173, 250);
+            }
+            .third{
+        display: flex;
+        margin-top: 20px;
+        background-color: rgb(194, 226, 245);
+        
+    }
+            .jiacu{
+                position:relative;
+                height:40px;
+                text-align: center;
+                font-weight: 900;
+                font-size:18px;
+
+            }
+            .third_left{
+                width: 300px;
+                height: 580px;
+                box-sizing: border-box;
+                border-right: 1px solid rgb(161, 163, 165);
+                text-align: center;
+            }
+            .third_right{
+                width: 700px;
+                height: 800px;
+                
+                text-align: center;
+            }
+            table
+            {
+                border-collapse:collapse;
+                margin: auto;
+
+            }
+
+            table,th, td
+            {
+                border: 1px solid black;
+            }
+            a{
+                color:black;
+                text-decoration:none;
+            }
+            #push:hover{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d">
+            <div class="header">
+                <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
+                <p class="n">北京科技大学赛事管理平台</p>
+                <a href="login.html" class="logout">退出登陆</a>
+            </div>
+            <div class="daohang">
+                <a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'TCHREPORT' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'TCHCHOICE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'TCHDOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
+            </div>
+            
+        </div>
+        <div class="third">
+            <div class="third_left">
+                <p class="jiacu">当前学期：</p>
+                <p >2018-2019第二学期</p>
+                <p><button>发布比赛</button></p>
+                           
+            </div>
+            <div class="third_right">
+                <p class="jiacu">已发布赛事</p>
+                <table class="table1">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>赛事名称</th>
+                            <th>初赛时间</th>
+                            <th>决赛时间</th>
+                            <th>承办学院</th>
+                            <th>已报人数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <th>北京科技大学数学竞赛</th>
+                            <th>4月12日</th>
+                            <th>5月31日</th>
+                            <th>数理学院</th>
+                            <th>57</th>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <th>北京科技大学英语演讲比赛</th>
+                            <th>4月12日</th>
+                            <th>5月31日</th>
+                            <th>外国语学院</th>
+                            <th>97</th>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <th>北京科技大学算法能力竞赛</th>
+                            <th>4月12日</th>
+                            <th>5月31日</th>
+                            <th>计通学院</th>
+                            <th>32</th>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

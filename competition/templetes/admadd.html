@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>发布比赛</title>
+        <style>
+            body{
+                width: 1000px;
+                margin: 0 auto;
+                background-color:rgb(255, 255, 255);
+            }
+            /*头部样式：学校图徽、实验平台名字*/
+            .d{
+                width: 1000px;
+                margin: 10px 0px 0px 0px ;
+                
+            }
+            .header{
+                width: 1000px;
+                height: 100px;
+                margin: 0;
+                background-color: rgb(59, 108, 165);
+            }
+            .logo{
+                display: inline-block;
+                width: auto;
+                height: 100px;
+            }
+            .n{
+                font-size: 35px;
+                text-align: center;
+                margin: 0 auto;
+                display: inline-block ;
+                position: relative;
+                top: -40px;
+                left: 180px;
+                font-family: "STHupo";
+                color: rgb(255, 255, 255);
+                -webkit-text-stroke: 2px black;
+                text-shadow: 3px 4px 10px white; 
+                font-weight:bold;
+                letter-spacing: 8px;
+
+            }
+           .logout{
+                float:right;
+                margin-top: 75px;
+                margin-right: 10px;
+                color: white;
+                text-decoration:none;
+
+           }
+            
+            .daohang{
+                display: flex;
+                width: 1000px;
+                height: 40px;
+                background-color:rgb(95, 164, 204);
+                
+                
+            }
+            .daohang_a {
+                color: rgb(231, 208, 208);
+                text-decoration: none;
+                width: 250px;
+                font-size: 20px;
+                text-align: center;
+                padding-top: 6.5px;
+            }
+            #daohang_a:hover{
+                color: rgb(253, 160, 54);
+                background-color: rgb(40, 173, 250);
+                
+            }
+            .logout:hover{
+                color: red;
+
+            }
+            #now_xuanxiang{
+                background-color: rgb(40, 173, 250);
+            }
+            .third{
+                display: flex;
+                margin-top: 20px;
+                background-color: rgb(194, 226, 245);
+                
+            }
+            .jiacu{
+                position:relative;
+                height:40px;
+                left:10px;
+                text-align:center;
+                font-weight: 900;
+                font-size:18px;
+
+            }
+            .jiacu1{
+                position:relative;
+                height:40px;
+                left:10px;
+                text-align:left;
+                font-weight: 900;
+                font-size:18px;
+
+            }
+            .third_left{
+                width: 300px;
+                height: 580px;
+                box-sizing: border-box;
+                border-right: 1px solid rgb(161, 163, 165);
+                text-align: center;
+            }
+            .third_right{
+                width: 700px;
+                height: 800px;
+                
+                text-align: center;
+            }
+
+            .tableStyle{
+                position: relative;
+                letter-spacing: 2px;
+                left:15px;
+            }
+            .text1
+            {
+            position:relative;
+                left:30px;
+                top:-2px;
+                text-align: center;
+            }
+            .name
+            {
+                font-size:30px;
+                letter-spacing:5px;
+                position: relative;
+                top:40px;
+                font-weight:bold;
+            }
+            .tableStyle1
+            {
+                margin:10px;
+                position: relative;
+                top:50px;
+                left:70px;
+            }
+            .third_plus
+            {
+                border-bottom-style:solid; 
+                border-bottom-color:rgb(161, 163, 165);
+                border-bottom-width:1px;
+            }
+            .te3
+            {
+                position:relative;
+                width:30px;
+            }
+            .add{
+                margin-left: 600px;
+                text-decoration:none;
+                color: black;
+            }
+            .add:hover{
+                color: red;
+            }
+            .img1{
+                width: 20px;
+
+            }
+            table
+            {
+                border-collapse:collapse;
+                margin: auto;
+                border: 0px;
+            }
+            select{
+                width: 145px;
+                height: 25px;
+
+            }
+            option{
+                text-align:center;
+            }
+            hr{
+                width: 600px;
+            }
+            tr{
+                display: block;
+                margin:5px 0;
+            }
+            h3{
+                float: right;
+            }
+            .week{
+                width: 80px;
+                height: 30px;
+                text-align:left;
+            }
+            form{
+                margin-top:20px;
+            }
+            .return{
+                text-decoration:none;
+                color:black;
+            }
+            .save{
+                ;
+            }
+        </style>
+            </head>
+            <body>
+                <div class="d">
+                    <div class="header">
+                        <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
+                        <p class="n">北京科技大学赛事管理平台</p>
+                        <a href="login.html" class="logout">退出登陆</a>
+                    </div>
+                    <div class="daohang">
+                        <a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'TCHREPORT' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'TCHCHOICE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'TCHDOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
+                    </div>
+                    
+                </div>
+                <div class="third">
+                    <div class="third_left">
+                        <p class="jiacu">当前学期：</p>
+                        <p class="third_left">2018-2019第二学期</p>
+            
+            
+                    </div>
+                    <div class="third_right">
+                        <form method="post" action="{% url 'ADD' %}">
+                            <table class="tableStyle1">
+                                <tbody>
+                                    <tr>
+                                        <td>赛事名称：</td>
+                                        <td><input type="text" name="timeStart" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td>初赛时间：</td>
+                                        <td><input type="date" name="timeStart" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td>决赛时间：</td>
+                                        <td><input type="date" name="timeStart" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td>承办学院：</td>
+                                        <td><select type="text" name="idntity" required style="width: 150px;">
+                                            <option value=""></option>
+                                            <option value="0">土木与环境工程学院</option>
+                                            <option value="1">材料科学与工程学院</option>
+                                            <option value="2">机械工程学院</option>
+                                            <option value="3">计算机与通信工程学院</option>
+                                            <option value="4">自动化学院</option>
+                                            <option value="5">数理学院</option>
+                                            <option value="6">化学与生物工程学院</option>
+                                            <option value="7">东凌经济管理学院</option>
+                                            <option value="8">文法学院</option>
+                                            <option value="9">外国语学院</option>
+                                            <option value="10">马克思主义学院</option>
+                                           </select></td>
+                                    </tr>
+                                    <tr>
+                                        <p><button>保存</button></p>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </form>
+                    </div>
+                  
+                </div>   
+
+            </body>
+            </html>
