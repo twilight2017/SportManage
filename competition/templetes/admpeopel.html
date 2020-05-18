@@ -1,8 +1,8 @@
-<!doctype html>
+<!Doctype html>
 <html>
     <head>
         <meta charset="UTF-8"/>
-        <title>导航栏</title>
+        <title>个人信息</title>
         <style>
             body{
                 width: 1000px;
@@ -79,7 +79,24 @@
             #now_xuanxiang{
                 background-color: rgb(40, 173, 250);
             }
-        </style>
+            .third{
+                width: 1000px;
+                height: 500px;
+                margin-top: 20px;
+                padding-top: 20px;
+                background-color: rgb(194, 226, 245);
+                text-align: center;
+            }
+            .title_{
+                font-weight: 900;
+                font-size: 20px;
+            }
+            .tableStyle{
+                position: relative;
+                left: 50px;
+                width: 900px;
+            }
+                    </style>
     </head>
     <body>
         <div class="d">
@@ -93,6 +110,39 @@
             </div>
             
         </div>
+
+        <div class="third">
+            <form action={% url 'TCHDOWNLOAD' %} method="post">
+            <table border="1" class="tableStyle">
         
-    </body>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>赛事名称</th>
+                        <th>管理</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>北京科技大学数学竞赛</td>
+                        <td><button>管理</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>北京科技大学演讲比赛</td>
+                        <td><button>管理</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>北京科技大学算法竞赛</td>
+                        <td><button>管理</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            </form>
+        
+        
+        </div>
+</body>
 </html>

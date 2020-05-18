@@ -190,7 +190,7 @@
             .add{
                 margin-left: 600px;
                 text-decoration:none;
-                color: black;
+                color: rgb(63, 20, 63);
             }
             .add:hover{
                 color: red;
@@ -223,7 +223,7 @@
                         <a href="login.html" class="logout">退出登陆</a>
                     </div>
                     <div class="daohang">
-                        <a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'TCHREPORT' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'TCHCHOICE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'TCHDOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
+                        <a href = "admhome.html"  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = "admprivate.html"  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href=admdeliver.html id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'TCHCHOICE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'TCHDOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
                     </div>
                     
                 </div>
@@ -238,7 +238,7 @@
 
 		    <h2>已发布赛事</h2>
             <div>
-                <a href="{% url 'ADD' %}" class="add">新增</a>
+                <a href="admadd.html" class="add">新增赛事</a>
             </div>
             <hr>
            <table class="table1">
@@ -248,6 +248,7 @@
                     <th>赛事名称</th>
                     <th>初赛时间</th>
                     <th>决赛时间</th>
+                    <th>赛事类别</th>
                     <th>承办学院</th>
                     <th>已报人数</th>
                     <th>删除</th>
@@ -258,8 +259,9 @@
                 <tr>
                     <th>1</th>
                     <th>北京科技大学数学竞赛</th>
-                    <th>4月12日</th>
-                    <th>5月31日</th>
+                    <th>2019/04/12</th>
+                    <th>2019/5/31</th>
+                    <th>积分赛</th>
                     <th>数理学院</th>
                     <th>57</th>
                     <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
@@ -268,8 +270,9 @@
                 <tr>
                     <th>2</th>
                     <th>北京科技大学英语演讲比赛</th>
-                    <th>4月12日</th>
-                    <th>5月31日</th>
+                    <th>2019/04/12</th>
+                    <th>2019/5/31</th>
+                    <th>积分赛</th>
                     <th>外国语学院</th>
                     <th>97</th>
                     <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
@@ -278,8 +281,9 @@
                 <tr>
                     <th>3</th>
                     <th>北京科技大学算法能力竞赛</th>
-                    <th>4月12日</th>
-                    <th>5月31日</th>
+                    <th>2019/04/12</th>
+                    <th>2019/5/31</th>
+                    <th>淘汰赛</th>
                     <th>计通学院</th>
                     <th>32</th>
                     <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
