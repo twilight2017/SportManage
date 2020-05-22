@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html>
     <head>
@@ -71,28 +72,27 @@
     <body>
         <div>
             <div class="LG">
-                    <img src="../static/img/lg.jpg" class="lg" alt="北京科技大学"/>
+                    <img src="{% static "img/lg.jpg" %}" class="lg" alt="北京科技大学"/>
                 </div>
                 <div class="MingCheng">
-                    <img src="../static/img/MingChen.png"  class="mingcheng" alt="北京科技大小赛事管理平台"/>
+                    <img src="{% static "img/MingChen.png" %}"  class="mingcheng" alt="北京科技大小赛事管理平台"/>
                 </div>
                 
         </div>
         
         <div class="form">
             <form action={% url 'LOGIN' %} method="post">
-            <p required>
-            </p>
+            {% csrf_token %}
             <p>账号：<input type="text" name="username" required /> </p>
             <p>密码：<input type="password" name="password" required/> </p>
             <p>
             <button type="submit"> 登陆 </button> 
          </p>
-
+             <p>{{ error }}</p>
             </form>
             
         </div>
 
     </body>
-    <a href="register.html" class="logout">注册</a>
+    <a href="/register/" class="logout">注册</a>
 </html>

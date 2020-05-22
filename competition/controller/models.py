@@ -8,11 +8,11 @@ class Students(models.Model):
 
     stu_id = models.CharField(max_length=50, default='None')
     stu_name = models.CharField(max_length=50, default='None')
-    stu_gender = models.CharField(max_length=10, default=False)
+    stu_gender = models.CharField(max_length=10, default='None')
     identity = models.CharField(max_length=50, default='None')
     stu_college = models.CharField(max_length=50, default='None')
     stu_mail = models.CharField(max_length=50, default='None')
-    stu_password = models.CharField(max_length=50,default='None')
+    stu_password = models.CharField(max_length=50, default='None')
     # 供于展示对象的函数
 
     def to_dict(self):
@@ -27,10 +27,11 @@ class Students(models.Model):
 
 
 class Admins(models.Model):
-    adm_id = models.CharField(max_length=50,default='None')
-    adm_name = models.CharField(max_length=50,default='None')
-    adm_gender = models.BooleanField(max_length=50,default='None')
+    adm_id = models.CharField(max_length=50, default='None')
+    adm_name = models.CharField(max_length=50, default='None')
+    adm_gender = models.CharField(max_length=50, default='None')
     identity = models.CharField(max_length=50, default='None')
-    adm_college = models.CharField(max_length=50,default='None')
-    adm_mail = models.CharField(max_length=50,default='None')
+    adm_college = models.CharField(max_length=50, default='None')
+    adm_mail = models.CharField(max_length=50, default='None')
+    adm_password = models.CharField(max_length=50, default='None')
 

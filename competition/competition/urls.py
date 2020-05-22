@@ -20,4 +20,5 @@ from controller import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', views.register, name="REGISTER"),
+    path('', views.login, name="LOGIN"),
 ]
