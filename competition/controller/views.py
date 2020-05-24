@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import Students, Admins
 from django.shortcuts import render, redirect
-from django.contrib.auth import login as LOGIN, logout
+from django.contrib.auth import login as LOGIN
+from django.contrib.auth import logout as LOGOUT
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate
@@ -92,6 +93,12 @@ def login(request):
             return render(request, 'login.html', {'error': '用户名或者密码错误！'})
     return render(request, 'login.html')
 
+
+# logout
+def logout(request):
+    # 不由用户操作的默认session失效时间为2周
+    LOGOUT(request)
+    return redirect('/')  # 返回登录页面
 
 # Student Home Page
 def home(request):
