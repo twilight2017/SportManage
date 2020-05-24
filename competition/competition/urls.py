@@ -24,6 +24,8 @@ urlpatterns = [
     path('home/', views.home, name="HOME"),
     path('admhome/', views.admhome, name="ADMHOME"),
     path('logout/', views.logout),
+    path('private/', views.private, name="PRIVATE"),
+    path('admprivate', views.admprivate, name="ADMPRIVATE")
 
 
 ]

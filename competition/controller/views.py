@@ -63,7 +63,9 @@ def register(request):
 
 def login(request):
 
-    if request.method == "POST" and request.POST:
+    if request.method == "GET":
+        return render(request, 'login.html')
+    elif request.method == "POST" and request.POST:
         _username = request.POST.get('username')
         _password = request.POST.get('password')
         try:
@@ -82,12 +84,18 @@ def login(request):
                 adm = Admins.objects.get(adm_name=_username)
                 request.session['name'] = adm.adm_name
                 request.session['id'] = adm.adm_id
+                request.session['gender'] = adm.adm_gender
+                request.session['college'] = adm.adm_college
+                request.session['mail'] = adm.adm_mail
                 return redirect('/admhome/')
             else:
                 LOGIN(request, user)
                 stu = Students.objects.get(stu_name=_username)
                 request.session['name'] = stu.stu_name
                 request.session['id'] = stu.stu_id
+                request.session['gender'] = stu.stu_gender
+                request.session['college'] = stu.stu_college
+                request.session['mail'] = stu.stu_mail
                 return redirect('/home/')
         else:
             return render(request, 'login.html', {'error': '用户名或者密码错误！'})
@@ -112,3 +120,75 @@ def admhome(request):
     _name = request.session.get('name')
     _id = request.session.get('id')
     return render(request, 'admhome.html')
+
+
+# Student private information
+def private(request):
+    _name = request.session.get('name')
+    _id = request.session.get('id')
+    _gender = request.session.get('gender')
+    if _gender == "1":
+        _gender = "女"
+    else:
+        _gender = "男"
+    _college = request.session.get('college')
+    if _college == "0":
+        _college = "土木与环境工程学院"
+    elif _college == "1":
+        _college = "材料科学与工程学院"
+    elif _college == "2":
+        _college = "机械工程学院"
+    elif _college == "3":
+        _college = "计算机与通信工程学院"
+    elif _college == "4":
+        _college = "自动化学院"
+    elif _college == "5":
+        _college = "数理学院"
+    elif _college == "6":
+        _college = "化学与生物工程学院"
+    elif _college == "7":
+        _college = "东凌经济管理学院"
+    elif _college == "8":
+        _college = "文法学院"
+    elif _college == "9":
+        _college = "外国语学院"
+    else:
+        _college = "马克思主义学院"
+    _mail = request.session.get('mail')
+    return render(request, 'private.html', {'name': _name, 'id': _id, 'gender': _gender, 'college': _college, 'mail': _mail})
+
+
+# Admain private information
+def admprivate(request):
+    _name = request.session.get('name')
+    _id = request.session.get('id')
+    _gender = request.session.get('gender')
+    if _gender == "1":
+        _gender = "女"
+    else:
+        _gender = "男"
+    _college = request.session.get('college')
+    if _college == "0":
+        _college = "土木与环境工程学院"
+    elif _college == "1":
+        _college = "材料科学与工程学院"
+    elif _college == "2":
+        _college = "机械工程学院"
+    elif _college == "3":
+        _college = "计算机与通信工程学院"
+    elif _college == "4":
+        _college = "自动化学院"
+    elif _college == "5":
+        _college = "数理学院"
+    elif _college == "6":
+        _college = "化学与生物工程学院"
+    elif _college == "7":
+        _college = "东凌经济管理学院"
+    elif _college == "8":
+        _college = "文法学院"
+    elif _college == "9":
+        _college = "外国语学院"
+    else:
+        _college = "马克思主义学院"
+    _mail = request.session.get('mail')
+    return render(request, 'admprivate.html', {'name': _name, 'id': _id, 'gender': _gender, 'college': _college, 'mail': _mail})

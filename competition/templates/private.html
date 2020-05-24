@@ -1,3 +1,4 @@
+{% load static %}
 <!Doctype html>
 <html>
     <head>
@@ -71,12 +72,6 @@
                 background-color: rgb(40, 173, 250);
                 
             }
-            .logout:hover{
-                color: red;
-            }
-            #now_xuanxiang{
-                background-color: rgb(40, 173, 250);
-            }
             .third{
                 width: 1000px;
                 margin-top: 20px;
@@ -84,6 +79,9 @@
                 display: grid;
                 background-color: rgb(195, 228, 247);
 
+            }
+            .logout:hover{
+                color: red;
             }
             .touxiang{
                 width: 150px;
@@ -94,32 +92,6 @@
                 padding-right: 50px;
                 border-bottom: 0.5px solid rgb(161, 162, 163);
                 
-            }
-            .third_left{
-                width: 680px;
-                margin-right: 20px;
-                height: 500px;
-                /*background-color: rgb(195, 228, 247);**/
-                
-            }
-            .xinxi{
-                margin: 0 ;
-                position: relative;
-                left: 200px;
-                top:100px;
-                font-size: 25px;
-                font-family: SimSun;
-            }
-            .grmm{
-                font-size: 20px;
-            }
-            .bcan{
-                font-size: 20px;
-                width: 100px;
-                height: 50px;
-                position: relative;
-                left: 50px;
-                top:20px;
             }
             .gonggao{
                 width: 580px;
@@ -135,10 +107,10 @@
             }
             .third_right{
                 width: 300px;
-                height: 480px;
+                height: 0px;
                 position: relative;
                 left: 700px;
-                top:-500px;
+                top:-130%;
                 /*border: 1px solid rgb(161, 162, 163);*/
                 box-shadow: none ;
                 text-align: center;
@@ -149,26 +121,27 @@
                 font-family: "SimSun";
                 margin: 0;
                 position: relative;
-                left: -18%;
+                left: 0%;
                 top:5px;
                 padding-bottom: 5px;
                 letter-spacing: 3px;
                 border-spacing: 8px;
+                text-align: center;
+                font-weight: 800;
             }
+
                     </style>
     </head>
     <body>
         <div class="d">
-            <div class="header">
-                <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
-                <p class="n">北京科技大学赛事管理平台</p>
-                <a href="login.html" class="logout">退出登陆</a>
-            </div>
-            <div class="daohang">
-                <a href = ""  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href={% url 'USERPAGE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'REPORT' %} id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a href={% url 'CHOICE' %} id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a href={% url 'DOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
-            </div>
-            
-        </div>
+                        <div class="header">
+                            <img src="{% static "img/lg.png" %}" class="logo" alt="北京科技大学"/>
+                            <p class="n">北京科技大学赛事管理平台</p>
+                            <a href="/logout/" class="logout">退出登陆</a>
+                        </div>
+                        <div class="daohang">
+                            <a href = {% url 'HOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href={% url 'PRIVATE' %} id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a  id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
+                        </div>
 
  <div class="third">
 
@@ -176,16 +149,16 @@
         <p class="gonggao">个人信息</p>
         <table border="0" class="tab">
             <tbody>
-                <tr><th>姓名：</th><td></td></tr>
-                <tr><th>学号：</th><td></td></tr>
-                <tr><th>性别：</th><td></td></tr>
-                <tr><th>学院：</th><td></td></tr>
-                <tr><th>班级：</th><td></td></tr>
+                <tr><td>姓名：</td><td>{{ name }}</td></tr>
+                <tr><td>学号：</td><td>{{ id }}</td></tr>
+                <tr><td>性别：</td><td>{{ gender }}</td></tr>
+                <tr><td>学院：</td><td>{{ college }}</td></tr>
+                <tr><td>邮箱：</td><td>{{ mail }}</td></tr>
             </tbody>
         </table>
         </div>
         <div class="third_right">
-            <img src="../static/img/timg.jpg"  class="touxiang" alt="头像"/>
+            <img src={% static "img/timg.jpg" %}  class="touxiang" alt="头像"/>
             <div class="name">
                 <p class="Name">参赛人员</p><p class="Name"></p>
             </div>           

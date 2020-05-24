@@ -151,12 +151,12 @@
                 <body>
                     <div class="d">
                         <div class="header">
-                            <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
+                            <img src="{% static "img/lg.png" %}" class="logo" alt="北京科技大学"/>
                             <p class="n">北京科技大学赛事管理平台</p>
                             <a href="/logout/" class="logout">退出登陆</a>
                         </div>
                         <div class="daohang">
-                            <a href = {% url 'HOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href="private.html" id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a  id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
+                            <a href = {% url 'HOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href={% url 'PRIVATE' %} id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a  id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
                         </div>
                         
                     </div>
@@ -165,7 +165,7 @@
                             <p class="gonggao">公告</p>
                             <table>
                                 <tbody>
-                                    <tr><td><a href="{{gonggao.url}}" class="table_a"></a></td></tr>
+                                    <tr><td><a href= class="table_a"></a></td></tr>
                                 </tbody>
                             </table>
                             
