@@ -78,10 +78,30 @@ def login(request):
         if user:
             if _username[0] == 'a':
                 LOGIN(request, user)
-                return redirect('/register/')
+                adm = Admins.objects.get(adm_name=_username)
+                request.session['name'] = adm.adm_name
+                request.session['id'] = adm.adm_id
+                return redirect('/admhome/')
             else:
                 LOGIN(request, user)
-                return redirect('/register/')
+                stu = Students.objects.get(stu_name=_username)
+                request.session['name'] = stu.stu_name
+                request.session['id'] = stu.stu_id
+                return redirect('/home/')
         else:
             return render(request, 'login.html', {'error': '用户名或者密码错误！'})
     return render(request, 'login.html')
+
+
+# Student Home Page
+def home(request):
+    _name = request.session.get('name')
+    _id = request.session.get('id')
+    return render(request, 'home.html', {'name': _name, 'id': _id})
+
+
+# Admin Home Page
+def admhome(request):
+    _name = request.session.get('name')
+    _id = request.session.get('id')
+    return render(request, 'admhome.html')

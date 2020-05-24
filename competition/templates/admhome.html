@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html>
     <head>
@@ -155,7 +156,7 @@
                 <a href="login.html" class="logout">退出登陆</a>
             </div>
             <div class="daohang">
-                <a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'TCHREPORT' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'TCHCHOICE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'TCHDOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
+                <a href = {% url 'ADMHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href= id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
             </div>
             
         </div>
@@ -170,7 +171,7 @@
                     </table>
                 </div>
                 <div class="third_right">
-                    <img src="../static/img/timg.jpg" %}" class="touxiang" alt="头像"/>
+                    <img src={% static "img/timg.jpg" %} class="touxiang" alt="头像"/>
                     <textarea liuyan="liuyan" type="liuiyan"placeholder="请输入您想发布的公告" ></textarea>
                     <div>
                         <button type="submit">发布</button>

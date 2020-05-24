@@ -1,3 +1,4 @@
+{% load static %}
 <!Doctype html>
 <html>
     <head>
@@ -155,7 +156,7 @@
                             <a href="login.html" class="logout">退出登陆</a>
                         </div>
                         <div class="daohang">
-                            <a href = ""  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href="private.html" id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'REPORT' %} id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a href={% url 'CHOICE' %} id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a href={% url 'DOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
+                            <a href = {% url 'HOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href="private.html" id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a  id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
                         </div>
                         
                     </div>
@@ -170,12 +171,12 @@
                             
                         </div>
                         <div class="third_right">
-                            <img src="../static/img/timg.jpg" %}" class="touxiang" alt="头像"/>
+                            <img src={% static "img/timg.jpg" %} class="touxiang" alt="头像"/>
                             <div class="name">
-                                <p class="Name">学号：</p><p class="Name"></p>
+                                <p class="Name">学号：</p><p class="Name">{{ id }}</p>
                             </div>
                             <div class="name">
-                                <p class="Name">姓名：</p><p class="Name"></p>
+                                <p class="Name">姓名：</p><p class="Name">{{ name }}</p>
                             </div>
                             
                         </div>
