@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Students, Admins
+from .models import Students, Admins, Competitions
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as LOGIN
 from django.contrib.auth import logout as LOGOUT
@@ -192,3 +192,35 @@ def admprivate(request):
         _college = "马克思主义学院"
     _mail = request.session.get('mail')
     return render(request, 'admprivate.html', {'name': _name, 'id': _id, 'gender': _gender, 'college': _college, 'mail': _mail})
+
+
+
+def create_com(request):
+    result = ''
+    if (request.method == "POST" or request.method == "GET") and request.POST:
+        c_name = request.POST.get('com_name')
+        c_start = request.POST.get('com_start')
+        c_end = request.POST.get('com_end')
+        c_type = request.POST.get('com_type')
+        c_college = request.POST.get('com_college')
+        db = Competitions.objects.filter(com_name=c_name)
+        if db:
+            result = 'had'
+            return render(request, 'admadd.html', {'result': result})
+        else:
+            info = Competitions()
+            info.com_name = c_name
+            info.com_startime = c_start
+            info.com_endtime = c_end
+            info.com_type = c_type
+            info.com_college = c_college
+            info.save()
+            result = 'success'
+            return render(request, 'admadd.html', {'result': result})
+    return render(request, 'admadd.html', {'result': result})
+
+
+
+# 展示已经发布的比赛
+def deliver(request):
+    return render(request, 'admdeliver.html')

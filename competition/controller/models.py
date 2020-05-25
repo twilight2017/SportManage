@@ -35,3 +35,15 @@ class Admins(models.Model):
     adm_mail = models.CharField(max_length=50, default='None')
     adm_password = models.CharField(max_length=50, default='None')
 
+
+# 比赛模型类
+
+class Competitions(models.Model):
+    com_id = models.CharField(max_length=50, default='None')
+    com_name = models.CharField(max_length=50, default='None')
+    com_startime = models.CharField(max_length=50, default='2018/10/10')
+    com_endtime = models.CharField(max_length=50, default='None')
+    com_type = models.CharField(max_length=50, default='None')
+    com_college = models.CharField(max_length=50, default='0')
+    # 报名总人数
+    com_total = models.CharField(max_length=50, default='None')

@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html>
     <head>
@@ -216,7 +217,7 @@
                         <a href="login.html" class="logout">退出登陆</a>
                     </div>
                     <div class="daohang">
-                        <a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'TCHHOME' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'TCHREPORT' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'TCHCHOICE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'TCHDOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
+                        <a href = {% url 'ADMHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'ADMPRIVATE' %} id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href = {% url 'ADMDELIVER' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a  id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
                     </div>
                     
                 </div>
@@ -228,28 +229,33 @@
             
                     </div>
                     <div class="third_right">
-                        <form method="post" action="{% url 'ADD' %}">
+                        <form method="post" action="{% url 'ADMADD' %}">
+                            {% csrf_token %}
                             <table class="tableStyle1"  style="border-spacing: 2000px;">
                                 <tbody>
                                     <tr>
                                         <td>赛事名称：</td>
-                                        <td><input type="text" name="timeStart" required></td>
+                                        <td><input type="text" name="com_name" required></td>
                                     </tr>
                                     <tr>
                                         <td>初赛时间：</td>
-                                        <td><input type="date" name="timeStart" required></td>
+                                        <td><input type="date" name="com_start" required></td>
                                     </tr>
                                     <tr>
                                         <td>决赛时间：</td>
-                                        <td><input type="date" name="timeStart" required></td>
+                                        <td><input type="date" name="com_end" required></td>
                                     </tr>
                                     <tr>
                                         <td>赛事类别：</td>
-                                        <td><input type="checkbox" name="timeStart">积分赛<input type="checkbox" name="timeStart">淘汰赛</td>
+                                        <td><select type="text" name="com_type" required style="width: 150px;">
+                                            <option value=""></option>
+                                            <option value="0">积分赛</option>
+                                            <option value="1">淘汰赛</option>
+                                           </select></td>
                                     </tr>
                                     <tr>
                                         <td>承办学院：</td>
-                                        <td><select type="text" name="idntity" required style="width: 150px;">
+                                        <td><select type="text" name="com_college" required style="width: 150px;">
                                             <option value=""></option>
                                             <option value="0">土木与环境工程学院</option>
                                             <option value="1">材料科学与工程学院</option>
@@ -266,13 +272,22 @@
                                            
                                     </tr>
                                     <tr>
-                                    <td clospan="2" style="text-align: center;"><button>发布</button></td>
+                                    <td clospan="2" style="text-align: right;"><button>发布</button></td>
                                     </tr>
                                 </tbody>
                               
                             </table>
 
                         </form>
+                        {% if result == 'had' %}
+                            <p style="text-align: center;color: red;">
+                                比赛已发布
+                            </p>
+                        {% elif result == 'success' %}
+                            <p style="text-align: center;color: red;">
+                                发布成功
+                            </p>
+                        {% endif %}
                     </div>
 
                 </div>   
