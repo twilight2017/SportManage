@@ -228,3 +228,9 @@ def admdeliver(request):
          for i in k:
              LIST.append(i)
          return render(request, 'admdeliver.html', {'deliever_list': LIST})
+
+
+# delete competition
+def delete(request, del_name):
+    Competitions.objects.filter(com_name=del_name).delete()
+    return redirect('/admdeliver/')

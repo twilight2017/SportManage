@@ -174,7 +174,6 @@
                     <th>承办学院</th>
                     <th>已报人数</th>
                     <th>删除</th>
-                    <th>修改</th>
                 </tr>
             </thead>
             <tbody>
@@ -217,13 +216,26 @@
                         {% endif %}
                     </th>
                     <th>{{ de.com_total }}</th>
-                    <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
-                    <th><img src="../static/img/xiugai.png" class="img1" alt="add"/></th>
+                    <th><a href="{% url 'DELETE' de.com_name %}" onclick="return del()"><img src="{% static "img/shanchu.png" %}" class="img1"/></a></th>
                 </tr>
             {% endfor %}
                 </tbody>
                 </tbody>
             </table>
+        <!--用JavaScript给用户以删除时的提示-->
+            <script text="text/javascript">
+                function del() {
+                     var message = confirm("确定要删除此项赛事信息吗？");
+                     if(message == true) {
+                         alert("删除成功！");
+                         return true;
+                     }
+                     else{
+                         return false;
+                     }
+                }
+
+            </script>
         </div>
     </div>
 </body>
