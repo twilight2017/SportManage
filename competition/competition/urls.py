@@ -27,7 +27,7 @@ urlpatterns = [
     path('private/', views.private, name="PRIVATE"),
     path('admprivate/', views.admprivate, name="ADMPRIVATE"),
     path('admadd/', views.create_com, name="ADMADD"),
-    path('admdeliver/', views.deliver, name="ADMDELIVER")
+    path('admdeliver/', views.admdeliver, name="ADMDELIVER")
 
 
 ]

@@ -44,6 +44,6 @@ class Competitions(models.Model):
     com_startime = models.CharField(max_length=50, default='2018/10/10')
     com_endtime = models.CharField(max_length=50, default='None')
     com_type = models.CharField(max_length=50, default='None')
-    com_college = models.CharField(max_length=50, default='0')
+    com_college = models.CharField(max_length=50, default='None')
     # 报名总人数
-    com_total = models.CharField(max_length=50, default='None')
+    com_total = models.CharField(max_length=50, default='0')

@@ -77,9 +77,6 @@
                 color: red;
 
             }
-            #now_xuanxiang{
-                background-color: rgb(40, 173, 250);
-            }
             .third{
                 display: flex;
                 margin-top: 20px;
@@ -93,16 +90,8 @@
                 text-align:center;
                 font-weight: 900;
                 font-size:18px;
-
-            }
-            .jiacu1{
-                position:relative;
-                height:40px;
-                left:10px;
-                text-align:left;
-                font-weight: 900;
-                font-size:18px;
-
+                position: relative;
+                top:20%;
             }
             .third_left{
                 width: 300px;
@@ -110,6 +99,8 @@
                 box-sizing: border-box;
                 border-right: 1px solid rgb(161, 163, 165);
                 text-align: center;
+                position: relative;
+                top:20%;
             }
             .third_right{
                 width: 700px;
@@ -118,26 +109,6 @@
                 text-align: center;
             }
 
-            .tableStyle{
-                position: relative;
-                letter-spacing: 2px;
-                left:15px;
-            }
-            .text1
-            {
-            position:relative;
-                left:30px;
-                top:-2px;
-                text-align: center;
-            }
-            .name
-            {
-                font-size:30px;
-                letter-spacing:5px;
-                position: relative;
-                top:40px;
-                font-weight:bold;
-            }
             .tableStyle1
             {
                 margin:20px;
@@ -147,28 +118,8 @@
                 border-spacing: 100px;
 
             }
-            .third_plus
-            {
-                border-bottom-style:solid; 
-                border-bottom-color:rgb(161, 163, 165);
-                border-bottom-width:1px;
-            }
-            .te3
-            {
-                position:relative;
-                width:30px;
-            }
-            .add{
-                margin-left: 600px;
-                text-decoration:none;
-                color: black;
-            }
             .add:hover{
                 color: red;
-            }
-            .img1{
-                width: 20px;
-
             }
             table
             {
@@ -195,17 +146,8 @@
             h3{
                 float: right;
             }
-            .week{
-                width: 80px;
-                height: 30px;
-                text-align:left;
-            }
             form{
                 margin-top:20px;
-            }
-            .return{
-                text-decoration:none;
-                color:black;
             }
         </style>
             </head>
@@ -214,7 +156,7 @@
                     <div class="header">
                         <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
                         <p class="n">北京科技大学赛事管理平台</p>
-                        <a href="login.html" class="logout">退出登陆</a>
+                        <a href="/logout/" class="logout">退出登陆</a>
                     </div>
                     <div class="daohang">
                         <a href = {% url 'ADMHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'ADMPRIVATE' %} id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href = {% url 'ADMDELIVER' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a  id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
@@ -229,6 +171,8 @@
             
                     </div>
                     <div class="third_right">
+                    <h2>发布新的赛事</h2>
+                    <hr>
                         <form method="post" action="{% url 'ADMADD' %}">
                             {% csrf_token %}
                             <table class="tableStyle1"  style="border-spacing: 2000px;">
@@ -271,14 +215,13 @@
                                            </select></td>
                                            
                                     </tr>
-                                    <tr>
-                                    <td clospan="2" style="text-align: right;"><button>发布</button></td>
-                                    </tr>
                                 </tbody>
                               
                             </table>
-
+                            <p></p>
+                            <p style="position:relative; left: 20%; height: 2px"><button>发布</button></p>
                         </form>
+                    <br/>
                         {% if result == 'had' %}
                             <p style="text-align: center;color: red;">
                                 比赛已发布

@@ -216,11 +216,15 @@ def create_com(request):
             info.com_college = c_college
             info.save()
             result = 'success'
-            return render(request, 'admadd.html', {'result': result})
+            return redirect('/admdeliver/')
     return render(request, 'admadd.html', {'result': result})
 
 
-
 # 展示已经发布的比赛
-def deliver(request):
-    return render(request, 'admdeliver.html')
+def admdeliver(request):
+     if request.method == 'GET':
+         LIST = []  # 用于获取后端所有竞赛信息的列表
+         k = Competitions.objects.filter()
+         for i in k:
+             LIST.append(i)
+         return render(request, 'admdeliver.html', {'deliever_list': LIST})

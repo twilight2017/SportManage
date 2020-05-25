@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html>
     <head>
@@ -76,9 +77,6 @@
                 color: red;
 
             }
-            #now_xuanxiang{
-                background-color: rgb(40, 173, 250);
-            }
             .third{
                 display: flex;
                 margin-top: 20px;
@@ -92,100 +90,24 @@
                 text-align:center;
                 font-weight: 900;
                 font-size:18px;
-
-            }
-            .jiacu1{
-                position:relative;
-                height:40px;
-                left:10px;
-                text-align:left;
-                font-weight: 900;
-                font-size:18px;
+                position: relative;
+                top:20%;
 
             }
             .third_left{
-                width: 300px;
+                width: 260px;
                 height: 580px;
                 box-sizing: border-box;
                 border-right: 1px solid rgb(161, 163, 165);
                 text-align: center;
+                position: relative;
+                top:20%;
             }
             .third_right{
                 width: 700px;
                 height: 800px;
                 
                 text-align: center;
-            }
-
-            .tableStyle{
-                position: relative;
-                letter-spacing: 2px;
-                left:15px;
-            }
-            .button1
-            {
-                font-size:18px;
-                position:relative;
-                width:150px;
-                height:30px;
-                top:-550px;
-                left:10px;
-            }
-            .button2
-            {
-                font-size:18px;
-                position:relative;
-                width:150px;
-                height:30px;
-                top:-530px;
-                left:10px;
-            }
-            .button3
-            {
-                font-size:12px;
-                width:50px;
-                height:20px;
-            }
-            .button4
-            {
-                position:relative;
-                top:-70px;
-                left:250px;
-                font-size:18px;
-                width:90px;
-                height:50px;
-            }
-            .text1
-            {
-            position:relative;
-                left:30px;
-                top:-2px;
-                text-align: center;
-            }
-            .name
-            {
-                font-size:30px;
-                letter-spacing:5px;
-                position: relative;
-                top:40px;
-                font-weight:bold;
-            }
-            .tableStyle1
-            {
-                position: relative;
-                top:50px;
-                left:70px;
-            }
-            .third_plus
-            {
-                border-bottom-style:solid; 
-                border-bottom-color:rgb(161, 163, 165);
-                border-bottom-width:1px;
-            }
-            .te3
-            {
-                position:relative;
-                width:30px;
             }
             .add{
                 margin-left: 600px;
@@ -256,39 +178,49 @@
                 </tr>
             </thead>
             <tbody>
+             {% for de in deliever_list %}
                 <tr>
-                    <th>1</th>
-                    <th>北京科技大学数学竞赛</th>
-                    <th>2019/04/12</th>
-                    <th>2019/5/31</th>
-                    <th>积分赛</th>
-                    <th>数理学院</th>
-                    <th>57</th>
+                    <th>{{ forloop.counter }}</th>
+                    <th>{{ de.com_name }}</th>
+                    <th>{{ de.com_startime}}</th>
+                    <th>{{ de.com_endtime }}</th>
+                    <th>
+                        {% if de.com_type == '0' %}
+                              积分赛
+                        {% elif de.com_type == '1' %}
+                              淘汰赛
+                        {% endif %}
+                    </th>
+                    <th>
+                        {% if de.com_college == '0' %}
+                            土木与环境工程学院
+                        {% elif de.com_college == '1' %}
+                            材料科学与工程学院
+                        {% elif de.com_college == '2' %}
+                            机械工程学院
+                        {% elif de.com_college == '3' %}
+                            计算机与通信工程学院
+                        {% elif de.com_college == '4' %}
+                            自动化学院
+                        {% elif de.com_college == '5' %}
+                            数理学院
+                        {% elif de.com_college == '6' %}
+                            化学与生物工程学院
+                        {% elif de.com_college == '7' %}
+                            东凌经济管理学院
+                        {% elif de.com_college == '8' %}
+                            文法学院
+                        {% elif de.com_college == '9' %}
+                            外国语学院
+                        {% elif de.com_college == '10' %}
+                            马克思主义学院
+                        {% endif %}
+                    </th>
+                    <th>{{ de.com_total }}</th>
                     <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
                     <th><img src="../static/img/xiugai.png" class="img1" alt="add"/></th>
                 </tr>
-                <tr>
-                    <th>2</th>
-                    <th>北京科技大学英语演讲比赛</th>
-                    <th>2019/04/12</th>
-                    <th>2019/5/31</th>
-                    <th>积分赛</th>
-                    <th>外国语学院</th>
-                    <th>97</th>
-                    <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
-                    <th><img src="../static/img/xiugai.png" class="img1" alt="add"/></th>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <th>北京科技大学算法能力竞赛</th>
-                    <th>2019/04/12</th>
-                    <th>2019/5/31</th>
-                    <th>淘汰赛</th>
-                    <th>计通学院</th>
-                    <th>32</th>
-                    <th><img src="../static/img/shanchu.png" class="img1" alt="delete"/></th>
-                    <th><img src="../static/img/xiugai.png" class="img1" alt="add"/></th>
-                </tr>
+            {% endfor %}
                 </tbody>
                 </tbody>
             </table>
