@@ -268,3 +268,13 @@ def consult(request):
             print(i)
             LIST.append(i)
         return render(request, 'consult.html', {'consult_list': LIST})
+
+
+# 供管理员进入赛程展示页面
+def admpeople(request):
+    if request.method == 'GET':
+        LIST = []
+        k = Competitions.objects.filter()
+        for i in k:
+            LIST.append(i)
+        return render(request, 'admpeopel.html', {'people_list':LIST})
