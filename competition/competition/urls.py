@@ -28,6 +28,7 @@ urlpatterns = [
     path('admprivate/', views.admprivate, name="ADMPRIVATE"),
     path('admadd/', views.create_com, name="ADMADD"),
     path('admdeliver/', views.admdeliver, name="ADMDELIVER"),
+    path('choice/', views.deliver, name="CHOICE"),
     path('admdeliver/<str:del_name>', views.delete, name="DELETE"),
 
 

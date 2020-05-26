@@ -234,3 +234,13 @@ def admdeliver(request):
 def delete(request, del_name):
     Competitions.objects.filter(com_name=del_name).delete()
     return redirect('/admdeliver/')
+
+
+#  学生端展示已经发布的比赛
+def deliver(request):
+    if request.method == 'GET':
+        LIST = [] #用于获取后端所有竞赛信息的列表
+        k = Competitions.objects.filter()
+        for i in k:
+            LIST.append(i)
+        return render(request, 'choice.html', {'choice_list': LIST})

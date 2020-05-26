@@ -1,3 +1,4 @@
+{% load static %}
 <!Doctype html>
 <html>
     <head>
@@ -89,7 +90,15 @@
         text-align: center;
         font-weight: 900;
         font-size:18px;
-
+        position: relative;
+        top:20%;
+    }
+            .jiacu1{
+        position:relative;
+        height:40px;
+        text-align: center;
+        font-weight: 900;
+        font-size:18px;
     }
     .third_left{
         width: 300px;
@@ -97,6 +106,8 @@
         box-sizing: border-box;
         border-right: 1px solid rgb(161, 163, 165);
         text-align: center;
+        position: relative;
+        top:20%;
     }
     .third_right{
         width: 700px;
@@ -132,19 +143,19 @@
                 <a href="login.html" class="logout">退出登陆</a>
             </div>
             <div class="daohang">
-                <a href = ""  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href={% url 'USERPAGE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'REPORT' %} id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a href={% url 'CHOICE' %} id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a href={% url 'DOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
+                <a href = {% url 'HOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href={% url 'PRIVATE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href = {% url 'CHOICE' %} id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a  id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
             </div>
             
         </div>
         <div class="third">
             <div class="third_left">
                 <p class="jiacu">当前学期：</p>
-                <p >2018-2019第二学期</p>
+                <p style="position: relative;top:20%;">2018-2019第二学期</p>
     
                            
             </div>
             <div class="third_right">
-                <p class="jiacu">赛事列表</p>
+                <p class="jiacu1">赛事列表</p>
                 <table class="table1">
                     <thead>
                         <tr>
@@ -152,39 +163,54 @@
                             <th>赛事名称</th>
                             <th>初赛时间</th>
                             <th>决赛时间</th>
+                            <th>赛事类别</th>
                             <th>承办学院</th>
                             <th>已报人数</th>
                             <th>我要报名</th>
                         </tr>
                     </thead>
                     <tbody>
+                    {% for ch in choice_list %}
                         <tr>
-                            <th>1</th>
-                            <th>北京科技大学数学竞赛</th>
-                            <th>4月12日</th>
-                            <th>5月31日</th>
-                            <th>数理学院</th>
-                            <th>57</th>
+                            <th>{{ forloop.counter }}</th>
+                            <th>{{ ch.com_name }}</th>
+                            <th>{{ ch.com_startime }}</th>
+                            <th>{{ ch.com_endtime }}</th>
+                            <th>{% if ch.com_type == '0' %}
+                                      积分赛
+                                {% elif ch.com_type == '1' %}
+                                      淘汰赛
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if ch.com_college == '0' %}
+                                    土木与环境工程学院
+                                {% elif ch.com_college == '1' %}
+                                    材料科学与工程学院
+                                {% elif ch.com_college == '2' %}
+                                    机械工程学院
+                                {% elif ch.com_college == '3' %}
+                                    计算机与通信工程学院
+                                {% elif ch.com_college == '4' %}
+                                    自动化学院
+                                {% elif ch.com_college == '5' %}
+                                    数理学院
+                                {% elif ch.com_college == '6' %}
+                                    化学与生物工程学院
+                                {% elif ch.com_college == '7' %}
+                                    东凌经济管理学院
+                                {% elif ch.com_college == '8' %}
+                                    文法学院
+                                {% elif ch.com_college == '9' %}
+                                    外国语学院
+                                {% elif ch.com_college == '10' %}
+                                    马克思主义学院
+                                {% endif %}
+                            </th>
+                            <th>{{ ch.com_total }}</th>
                             <th><button>报名</button></th>
                         </tr>
-                        <tr>
-                            <th>2</th>
-                            <th>北京科技大学英语演讲比赛</th>
-                            <th>4月12日</th>
-                            <th>5月31日</th>
-                            <th>外国语学院</th>
-                            <th>97</th>
-                            <th><button>报名</button></th>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <th>北京科技大学算法能力竞赛</th>
-                            <th>4月12日</th>
-                            <th>5月31日</th>
-                            <th>计通学院</th>
-                            <th>32</th>
-                            <th><button>报名</button></th>
-                        </tr>
+                    {% endfor %}
                         </tbody>
                 </table>
             </div>
