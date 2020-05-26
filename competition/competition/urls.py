@@ -30,6 +30,7 @@ urlpatterns = [
     path('admdeliver/', views.admdeliver, name="ADMDELIVER"),
     path('choice/', views.deliver, name="CHOICE"),
     path('admdeliver/<str:del_name>', views.delete, name="DELETE"),
+    path('choice/<str:join_name>', views.join, name='JOIN'),
 
 
 ]

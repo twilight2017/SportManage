@@ -208,11 +208,25 @@
                                 {% endif %}
                             </th>
                             <th>{{ ch.com_total }}</th>
-                            <th><button>报名</button></th>
+                            <th><a href="{% url 'JOIN' ch.com_name %}" onclick="return join()"><button>报名</button></a></th>
                         </tr>
                     {% endfor %}
                         </tbody>
                 </table>
+            <!--用JavaScript给用户以删除时的提示-->
+            <script text="text/javascript">
+                function join() {
+                     var message = confirm("确定报名参加该项赛事吗？");
+                     if(message == true) {
+                         alert("报名成功！");
+                         return true;
+                     }
+                     else{
+                         return false;
+                     }
+                }
+
+            </script>
             </div>
         </div>
     </body>

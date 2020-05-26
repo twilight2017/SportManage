@@ -45,5 +45,7 @@ class Competitions(models.Model):
     com_endtime = models.CharField(max_length=50, default='None')
     com_type = models.CharField(max_length=50, default='None')
     com_college = models.CharField(max_length=50, default='None')
+    # 多对多关系用外键关联到学生类
+    com_stu = models.ManyToManyField(to=Students, related_name="cho_com", null=True, blank=True,default=None)
     # 报名总人数
     com_total = models.CharField(max_length=50, default='0')

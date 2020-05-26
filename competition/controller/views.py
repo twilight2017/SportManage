@@ -238,9 +238,19 @@ def delete(request, del_name):
 
 #  学生端展示已经发布的比赛
 def deliver(request):
-    if request.method == 'GET':
-        LIST = [] #用于获取后端所有竞赛信息的列表
+    LIST = []  # 用于获取后端所有竞赛信息的列表
+    if request.method == 'GET' :
         k = Competitions.objects.filter()
         for i in k:
             LIST.append(i)
         return render(request, 'choice.html', {'choice_list': LIST})
+
+
+#  学生加入一个比赛
+def join(request, join_name):
+        u_id = request.session.get('id')
+        stu = Students.objects.get(stu_id=u_id)
+        com = Competitions.objects.get(com_name=join_name)
+        stu.cho_com.add(com)
+        return redirect('/choice/')
+    # return render(request, 'choice.html')
