@@ -32,7 +32,8 @@ urlpatterns = [
     path('admdeliver/<str:del_name>', views.delete, name="DELETE"),
     path('choice/<str:join_name>', views.join, name='JOIN'),
     path('consult/', views.consult, name='CONSULT'),
-    path('admpeople/', views.admpeople, name='ADMPEOPLE')
+    path('admpeople/', views.admpeople, name='ADMPEOPLE'),
+    path('admgroup/<str:man_name>', views.admgroup, name='ADMGROUP'),
 
 
 ]

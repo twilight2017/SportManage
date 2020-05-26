@@ -127,7 +127,7 @@
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ pe.com_name }}</td>
-                        <td><a ><button>管理</button></a></td>
+                        <td><a href = {% url 'ADMGROUP' pe.com_name%}><button>管理</button></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

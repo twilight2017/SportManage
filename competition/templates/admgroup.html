@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html>
     <head>
@@ -92,6 +93,8 @@
                 text-align:center;
                 font-weight: 900;
                 font-size:18px;
+                position: relative;
+                top:20%;
 
             }
             .jiacu1{
@@ -105,7 +108,7 @@
             .jiacu2{
                position: relative;
                left: -280px;
-               font-weight: 1000;
+               font-weight: 800;
             }
             .third_left{
                 width: 300px;
@@ -113,95 +116,14 @@
                 box-sizing: border-box;
                 border-right: 1px solid rgb(161, 163, 165);
                 text-align: center;
+                position: relative;
+                top:20%;
             }
             .third_right{
                 width: 700px;
                 height: 800px;
                 
                 text-align: center;
-            }
-
-            .tableStyle{
-                position: relative;
-                letter-spacing: 2px;
-                left:15px;
-            }
-            .button1
-            {
-                font-size:18px;
-                position:relative;
-                width:150px;
-                height:30px;
-                top:-550px;
-                left:10px;
-            }
-            .button2
-            {
-                font-size:18px;
-                position:relative;
-                width:150px;
-                height:30px;
-                top:-530px;
-                left:10px;
-            }
-            .button3
-            {
-                font-size:12px;
-                width:50px;
-                height:20px;
-            }
-            .button4
-            {
-                position:relative;
-                top:-70px;
-                left:250px;
-                font-size:18px;
-                width:90px;
-                height:50px;
-            }
-            .text1
-            {
-            position:relative;
-                left:30px;
-                top:-2px;
-                text-align: center;
-            }
-            .name
-            {
-                font-size:30px;
-                letter-spacing:5px;
-                position: relative;
-                top:40px;
-                font-weight:bold;
-            }
-            .tableStyle1
-            {
-                position: relative;
-                top:50px;
-                left:70px;
-            }
-            .third_plus
-            {
-                border-bottom-style:solid; 
-                border-bottom-color:rgb(161, 163, 165);
-                border-bottom-width:1px;
-            }
-            .te3
-            {
-                position:relative;
-                width:30px;
-            }
-            .add{
-                margin-left: 600px;
-                text-decoration:none;
-                color: rgb(63, 20, 63);
-            }
-            .add:hover{
-                color: red;
-            }
-            .img1{
-                width: 20px;
-
             }
             table.tableStyle2{
                 margin:20px;
@@ -232,10 +154,10 @@
                     <div class="header">
                         <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
                         <p class="n">北京科技大学赛事管理平台</p>
-                        <a href="login.html" class="logout">退出登陆</a>
+                        <a href="/logout/" class="logout">退出登陆</a>
                     </div>
                     <div class="daohang">
-                        <a href = "admhome.html"  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = "admprivate.html"  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href=admdeliver.html id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'TCHCHOICE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'TCHDOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
+                        <a href = {% url 'ADMHOME' %} id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'ADMPRIVATE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href = {% url 'ADMDELIVER' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href = {% url 'ADMPEOPLE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
                     </div>
                     
                 </div>
@@ -265,18 +187,19 @@
                 </tr>
             </thead>
             <tbody>
+            {% for gr in group_list %}
                 <tr>
-                    <th>1</th>
-                    <th>40000001</th>
-                    <th>张三</th>
-                    <th>2</th>
-                    <th>40000002</th>
-                    <th>李四</th>
-                    <th>3</th>
-                    <th>40000003</th>
-                    <th>王二</th>
+                {% if forloop.counter|divisibleby:"2"%}
+                    <th>{{ forloop.counter }}</th>
+                    <th>{{ gr.stu_id }}</th>
+                    <th>{{ gr.stu_name }}</th>
+                {% else %}
+                    <th>{{ forloop.counter }}</th>
+                    <th>{{ gr.stu_id }}</th>
+                    <th>{{ gr.stu_name}}</th>
+                {% endif %}
                 </tr>
-                </tbody>
+            {% endfor %}
                 </tbody>
             </table>
             <div class="arange">

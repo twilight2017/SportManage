@@ -263,9 +263,7 @@ def consult(request):
         u_id = request.session.get('id')
         stu = Students.objects.get(stu_id=u_id)
         k = stu.cho_com.all()
-        print(k)
         for i in k:
-            print(i)
             LIST.append(i)
         return render(request, 'consult.html', {'consult_list': LIST})
 
@@ -277,4 +275,16 @@ def admpeople(request):
         k = Competitions.objects.filter()
         for i in k:
             LIST.append(i)
-        return render(request, 'admpeopel.html', {'people_list':LIST})
+        return render(request, 'admpeopel.html', {'people_list': LIST})
+
+
+# 用于管理员看到选择了该比赛的人，是多对多关系的反向应用
+def admgroup(request, man_name):
+    if request.method == 'GET':
+        LIST = []
+        com = Competitions.objects.get(com_name=man_name)
+        k = com.com_stu.all()
+        print(k)
+        for i in k:
+            LIST.append(i)
+        return render(request, 'admgroup.html', {'group_list': LIST})
