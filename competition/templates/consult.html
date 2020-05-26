@@ -74,9 +74,6 @@
             .logout:hover{
                 color: red;
             }
-            #now_xuanxiang{
-                background-color: rgb(40, 173, 250);
-            }
             .third{
                 width: 1000px;
                 height: 500px;
@@ -85,14 +82,17 @@
                 background-color: rgb(194, 226, 245);
                 text-align: center;
             }
-            .title_{
-                font-weight: 900;
-                font-size: 20px;
-            }
             .tableStyle{
                 position: relative;
                 left: 50px;
                 width: 900px;
+            }
+            .jiacu1{
+                position:relative;
+                height:40px;
+                text-align: center;
+                font-weight: 900;
+                font-size:18px;
             }
         </style>
     </head>
@@ -101,15 +101,15 @@
             <div class="header">
                 <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
                 <p class="n">北京科技大学赛事管理平台</p>
-                <a href="login.html" class="logout">退出登陆</a>
+                <a href="/logout/" class="logout">退出登陆</a>
             </div>
             <div class="daohang">
-                <a href = ""  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href={% url 'USERPAGE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'REPORT' %} id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a href={% url 'CHOICE' %} id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a href={% url 'DOWNLOAD' %} id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
+                <a href = {% url 'HOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'PRIVATE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href = {% url 'CHOICE' %} id="daohang_a" class="daohang_a" target="_blank">加入比赛</a><a href={% url 'CONSULT' %} id="daohang_a" class="daohang_a" target="_blank">赛程查询</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩查询</a>
             </div>
             
         </div>
         <div class="third">
-            <form action={% url 'TCHDOWNLOAD' %} method="post">
+            <p class="jiacu1">已报名比赛</p>
             <table border="1" class="tableStyle">
         
                 <thead>
@@ -120,24 +120,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                {% for cn in consult_list %}
                     <tr>
-                        <td>1</td>
-                        <td>北京科技大学数学竞赛</td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ cn.com_name }}</td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>北京科技大学演讲比赛</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>北京科技大学算法竞赛</td>
-                        <td></td>
-                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
-            </form>
         
         
         </div>

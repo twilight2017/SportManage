@@ -252,5 +252,19 @@ def join(request, join_name):
         stu = Students.objects.get(stu_id=u_id)
         com = Competitions.objects.get(com_name=join_name)
         stu.cho_com.add(com)
-        return redirect('/choice/')
-    # return render(request, 'choice.html')
+        return redirect('/consult/')
+
+
+
+# 查询学生已经报名的比赛
+def consult(request):
+    if request.method == 'GET':
+        LIST = []
+        u_id = request.session.get('id')
+        stu = Students.objects.get(stu_id=u_id)
+        k = stu.cho_com.all()
+        print(k)
+        for i in k:
+            print(i)
+            LIST.append(i)
+        return render(request, 'consult.html', {'consult_list': LIST})
