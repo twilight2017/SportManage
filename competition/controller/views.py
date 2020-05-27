@@ -289,4 +289,4 @@ def admgroup(request, man_name):
         k = com.com_stu.all()
         for i in k:
             LIST.append(i)
-        return render(request, 'admgroup.html', {'group_list': LIST})
+        return render(request, 'admgroup.html', {'group_list': LIST, 'com': com})
