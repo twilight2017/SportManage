@@ -284,7 +284,7 @@ def admgroup(request, man_name):
         LIST = []
         com = Competitions.objects.get(com_name=man_name)
         k = com.com_stu.all()
-        print(k)
+        c = 1
         for i in k:
             LIST.append(i)
-        return render(request, 'admgroup.html', {'group_list': LIST})
+        return render(request, 'admgroup.html', {'group_list': LIST, 'con': c})

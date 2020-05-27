@@ -187,19 +187,23 @@
                 </tr>
             </thead>
             <tbody>
+            {% with con as counter  %}
+
+            {% endwith %}
             {% for gr in group_list %}
-                <tr>
-                {% if forloop.counter|divisibleby:"2"%}
+                {% if forloop.counter0|divisibleby:"3" %}
+                    <tr>
                     <th>{{ forloop.counter }}</th>
                     <th>{{ gr.stu_id }}</th>
                     <th>{{ gr.stu_name }}</th>
                 {% else %}
                     <th>{{ forloop.counter }}</th>
                     <th>{{ gr.stu_id }}</th>
-                    <th>{{ gr.stu_name}}</th>
+                    <th>{{ gr.stu_name }}</th>
                 {% endif %}
-                </tr>
             {% endfor %}
+                </tr>
+
                 </tbody>
             </table>
             <div class="arange">
