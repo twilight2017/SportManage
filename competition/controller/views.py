@@ -290,3 +290,12 @@ def admgroup(request, man_name):
         for i in k:
             LIST.append(i)
         return render(request, 'admgroup.html', {'group_list': LIST, 'com': com})
+
+# 成绩管理页面对所有已发布赛事进行展示
+def admmark(request):
+    if request.method == 'GET':
+        LIST = []
+        k =Competitions.objects.filter()
+        for i in k:
+            LIST.append(i)
+        return render(request, 'admmark.html', {'mark_list': LIST})

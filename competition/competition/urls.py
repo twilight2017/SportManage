@@ -34,6 +34,7 @@ urlpatterns = [
     path('consult/', views.consult, name='CONSULT'),
     path('admpeople/', views.admpeople, name='ADMPEOPLE'),
     path('admgroup/<str:man_name>', views.admgroup, name='ADMGROUP'),
+    path('admmark/', views.admmark, name='ADMARK')
 
 
 ]
