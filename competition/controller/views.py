@@ -291,6 +291,7 @@ def admgroup(request, man_name):
             LIST.append(i)
         return render(request, 'admgroup.html', {'group_list': LIST, 'com': com})
 
+
 # 成绩管理页面对所有已发布赛事进行展示
 def admmark(request):
     if request.method == 'GET':
@@ -299,3 +300,15 @@ def admmark(request):
         for i in k:
             LIST.append(i)
         return render(request, 'admmark.html', {'mark_list': LIST})
+
+
+# 学生端的成绩查询页面，查看所参加赛事的已发布成绩
+def mark(request):
+    if request.method == 'GET':
+        LIST = []
+        u_id = request.session.get('id')  # 获取登录的学生id
+        stu = Students.objects.get(stu_id=u_id)  # 根据u_id获取学生对象
+        k = stu.cho_com.all()
+        for i in k:
+            LIST.append(i)
+        return render(request, 'mark.html', {'mark_list': LIST})
