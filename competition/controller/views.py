@@ -251,6 +251,9 @@ def join(request, join_name):
         u_id = request.session.get('id')
         stu = Students.objects.get(stu_id=u_id)
         com = Competitions.objects.get(com_name=join_name)
+        com.com_total = str(int(com.com_total)+1);
+        # 非常重要，改了数据库类的属性值之后一定要进行save操作
+        com.save()
         stu.cho_com.add(com)
         return redirect('/consult/')
 
@@ -284,7 +287,6 @@ def admgroup(request, man_name):
         LIST = []
         com = Competitions.objects.get(com_name=man_name)
         k = com.com_stu.all()
-        c = 1
         for i in k:
             LIST.append(i)
-        return render(request, 'admgroup.html', {'group_list': LIST, 'con': c})
+        return render(request, 'admgroup.html', {'group_list': LIST})
