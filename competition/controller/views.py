@@ -6,6 +6,7 @@ from django.contrib.auth import logout as LOGOUT
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate
+import os
 
 # Create your views here.
 
@@ -294,7 +295,7 @@ def admgroup(request, man_name):
 
 # 成绩管理页面对所有已发布赛事进行展示
 def admmark(request):
-    if request.method == 'GET':
+    if request.method == 'GET' or request.method == 'POST':
         LIST = []
         k =Competitions.objects.filter()
         for i in k:
@@ -312,3 +313,19 @@ def mark(request):
         for i in k:
             LIST.append(i)
         return render(request, 'mark.html', {'mark_list': LIST})
+
+
+# 教师端上传当前比赛的成绩信息
+def upload(request, ma_name):
+    if request.method == 'GET' or request.method == 'POST':
+        com = Competitions.objects.get(com_name=ma_name)
+        myfile= request.FILES.get("upfile", None)
+        com.com_mark = myfile.name
+        com.save()
+        destination = open(os.path.join("D:\study\soft_project\course_design\com_manage\SportManage\competition\Files", myfile.name), 'wb+')
+        # write
+        for chunk in myfile.chunks():
+            destination.write(chunk)
+        destination.close()
+        return render(request, 'admmark.html')
+

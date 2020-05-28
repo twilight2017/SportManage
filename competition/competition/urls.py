@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from controller import views
+from django.views.static import serve
+from competition.settings import FILES_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,7 +37,7 @@ urlpatterns = [
     path('admpeople/', views.admpeople, name='ADMPEOPLE'),
     path('admgroup/<str:man_name>', views.admgroup, name='ADMGROUP'),
     path('admmark/', views.admmark, name='ADMARK'),
+    # 用于管理员上传赛程信息文件
+    path('admmark/<str:ma_name>', views.upload, name="UPLOAD"),
     path('mark/', views.mark, name="MARK"),
-
-
 ]

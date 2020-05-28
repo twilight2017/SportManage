@@ -49,3 +49,5 @@ class Competitions(models.Model):
     com_stu = models.ManyToManyField(to=Students, related_name="cho_com", null=True, blank=True,default=None)
     # 报名总人数
     com_total = models.CharField(max_length=50, default='0')
+    # 有关成绩信息的文件
+    com_mark = models.FileField(max_length=200, null=True, blank=True)
