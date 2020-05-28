@@ -40,4 +40,5 @@ urlpatterns = [
     # 用于管理员上传赛程信息文件
     path('admmark/<str:ma_name>', views.upload, name="UPLOAD"),
     path('mark/', views.mark, name="MARK"),
+    path('mark/<str:file_name>', views.download, name="DOWNLOAD"),
 ]

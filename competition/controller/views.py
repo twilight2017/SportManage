@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate
 import os
+from django.shortcuts import HttpResponse
 
 # Create your views here.
 
@@ -329,3 +330,11 @@ def upload(request, ma_name):
         destination.close()
         return render(request, 'admmark.html')
 
+
+# 实现学生的文件下载功能
+def download(request, file_name):
+    file = open('Files/'+file_name, 'rb')
+    response = HttpResponse(file)
+    response['Content-Type'] = 'application/octet-stream'
+    response['Content-Disposition'] = 'attachment;'
+    return response

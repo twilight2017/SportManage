@@ -116,7 +116,7 @@
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ ma.com_name }}</td>
-                        <td><a href="../{{ ma.com_mark }}" download>{{ ma.com_mark }}</a></td>
+                        <td><a href="{% url 'DOWNLOAD' ma.com_mark %}">{{ ma.com_mark }}</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
