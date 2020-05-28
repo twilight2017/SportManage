@@ -123,7 +123,7 @@
                         <form action="{% url 'UPLOAD' ma.com_name %}" method="post" enctype="multipart/form-data" >
                             {% csrf_token %}
                         <td><input type="file" name="upfile"></td>
-                        <td><button type="submit">发布</button></td>
+                        <td><button type="submit" onclick=alert("发布成功!")>发布</button></td>
                         </form>
                     </tr>
                 {% endfor %}

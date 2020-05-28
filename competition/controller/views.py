@@ -328,7 +328,7 @@ def upload(request, ma_name):
         for chunk in myfile.chunks():
             destination.write(chunk)
         destination.close()
-        return render(request, 'admmark.html')
+        return redirect('/admmark/')
 
 
 # 实现学生的文件下载功能

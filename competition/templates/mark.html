@@ -116,7 +116,11 @@
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ ma.com_name }}</td>
+                        {% if ma.com_mark is not None %}
                         <td><a href="{% url 'DOWNLOAD' ma.com_mark %}">{{ ma.com_mark }}</a></td>
+                        {% else %}
+                            <td>未公布</td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
                 </tbody>
