@@ -124,7 +124,11 @@
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ cn.com_name }}</td>
-                        <td></td>
+                       {% if cn.com_infor is not None %}
+                        <td><a href="{% url 'DOWNLOAD' cn.com_infor %}">{{ cn.com_infor }}</a></td>
+                        {% else %}
+                            <td>未公布</td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
                 </tbody>

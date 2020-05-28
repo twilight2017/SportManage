@@ -223,8 +223,11 @@
                     <tbody>
                         <tr>
                             <td>发布赛程：</td>
-                            <td><input type="file" name="timeStart" ></td>
-                            <td><td style="text-align: center;"><button>发布</button></td></td>
+                            <form action="{% url 'GROUPUP' com.com_name %}" method="post" enctype="multipart/form-data" >
+                             {% csrf_token %}
+                            <td><input type="file" name="groupfile" ></td>
+                            <td><button type="submit" onclick=alert("发布成功!")>发布</button></td>
+                            </form>
                         </tr>
                         <tr>
                         

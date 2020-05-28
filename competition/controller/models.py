@@ -51,3 +51,4 @@ class Competitions(models.Model):
     com_total = models.CharField(max_length=50, default='0')
     # 有关成绩信息的文件
     com_mark = models.CharField(max_length=200, null=True, blank=True)
+    com_infor= models.CharField(max_length=200, null=True, blank=True)

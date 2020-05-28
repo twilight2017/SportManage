@@ -37,8 +37,11 @@ urlpatterns = [
     path('admpeople/', views.admpeople, name='ADMPEOPLE'),
     path('admgroup/<str:man_name>', views.admgroup, name='ADMGROUP'),
     path('admmark/', views.admmark, name='ADMARK'),
-    # 用于管理员上传赛程信息文件
+    # 用于管理员上传比赛成绩文件
     path('admmark/<str:ma_name>', views.upload, name="UPLOAD"),
     path('mark/', views.mark, name="MARK"),
     path('mark/<str:file_name>', views.download, name="DOWNLOAD"),
+    # 用于管理员上传赛程信息文件
+    path('ADMGROUP/<str:infor_name>', views.groupup, name="GROUPUP")
+
 ]

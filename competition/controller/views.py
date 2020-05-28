@@ -291,7 +291,7 @@ def admpeople(request):
 
 # 用于管理员看到选择了该比赛的人，是多对多关系的反向应用
 def admgroup(request, man_name):
-    if request.method == 'GET':
+    if request.method == 'GET' or request.method == 'POST':
         LIST = []
         com = Competitions.objects.get(com_name=man_name)
         k = com.com_stu.all()
@@ -322,7 +322,7 @@ def mark(request):
         return render(request, 'mark.html', {'mark_list': LIST})
 
 
-# 教师端上传当前比赛的成绩信息
+# 管理员上传当前比赛的成绩信息
 def upload(request, ma_name):
     if request.method == 'GET' or request.method == 'POST':
         com = Competitions.objects.get(com_name=ma_name)
@@ -344,3 +344,19 @@ def download(request, file_name):
     response['Content-Type'] = 'application/octet-stream'
     response['Content-Disposition'] = 'attachment;'
     return response
+
+
+# 管理员上传当前比赛的成绩信息
+def groupup(request, infor_name):
+    if request.method == 'GET' or request.method == 'POST':
+        com = Competitions.objects.get(com_name=infor_name)
+        print(com.com_name)
+        myfile= request.FILES.get("groupfile", None)
+        com.com_infor = myfile.name
+        com.save()
+        destination = open(os.path.join("D:\study\soft_project\course_design\com_manage\SportManage\competition\Files", myfile.name), 'wb+')
+        # write
+        for chunk in myfile.chunks():
+            destination.write(chunk)
+        destination.close()
+        return redirect('ADMGROUP')
