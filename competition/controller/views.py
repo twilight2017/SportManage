@@ -241,11 +241,17 @@ def delete(request, del_name):
 #  学生端展示已经发布的比赛
 def deliver(request):
     LIST = []  # 用于获取后端所有竞赛信息的列表
-    if request.method == 'GET' :
+    if request.method == 'GET':
         k = Competitions.objects.filter()
         for i in k:
             LIST.append(i)
-        return render(request, 'choice.html', {'choice_list': LIST})
+        LIST1 = []
+        u_id = request.session.get('id')
+        stu = Students.objects.get(stu_id=u_id)
+        k1 = stu.cho_com.all()
+        for j in k1:
+            LIST1.append(j)
+        return render(request, 'choice.html', {'choice_list': LIST, 'alread_list': LIST1})
 
 
 #  学生加入一个比赛

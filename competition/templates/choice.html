@@ -98,7 +98,7 @@
                 font-size:18px;
             }
             .third_left{
-                width: 300px;
+                width: 260px;
                 height: 580px;
                 box-sizing: border-box;
                 border-right: 1px solid rgb(161, 163, 165);
@@ -205,7 +205,11 @@
                                 {% endif %}
                             </th>
                             <th>{{ ch.com_total }}</th>
-                            <th><a href="{% url 'JOIN' ch.com_name %}" onclick="return join()"><button>报名</button></a></th>
+                            {% if ch in alread_list %}
+                                <th style="color:red;">已报名</th>
+                            {% else %}
+                                <th><a href="{% url 'JOIN' ch.com_name %}" onclick="return join()"><button>报名</button></a></th>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                         </tbody>
