@@ -104,7 +104,7 @@
             <div class="header">
                 <img src="../static/img/lg.png" class="logo" alt="北京科技大学"/>
                 <p class="n">北京科技大学赛事管理平台</p>
-                <a href="/lougout/" class="logout">退出登陆</a>
+                <a href="/logout/" class="logout">退出登陆</a>
             </div>
             <div class="daohang">
                 <a href = {% url 'ADMHOME' %}  id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'ADMPRIVATE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href={% url 'ADMDELIVER' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href={% url 'ADMPEOPLE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'ADMARK' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
@@ -120,6 +120,8 @@
                         <th>序号</th>
                         <th>赛事名称</th>
                         <th>管理</th>
+                        <th>上传赛程</th>
+                        <th>发布</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -128,6 +130,11 @@
                         <td>{{ forloop.counter }}</td>
                         <td>{{ pe.com_name }}</td>
                         <td><a href = {% url 'ADMGROUP' pe.com_name%}><button>管理</button></a></td>
+                        <form action="{% url 'GROUPUP' pe.com_name %}" method="post" enctype="multipart/form-data" >
+                            {% csrf_token %}
+                        <td><input style="weight:20px;" type="file" name="groupfile"></td>
+                        <td><button type="submit" onclick=alert("发布成功!")>发布</button></td>
+                        </form>
                     </tr>
                 {% endfor %}
                 </tbody>

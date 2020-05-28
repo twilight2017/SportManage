@@ -359,7 +359,7 @@ def groupup(request, infor_name):
         for chunk in myfile.chunks():
             destination.write(chunk)
         destination.close()
-        return redirect('ADMGROUP')
+        return redirect('/admpeople/')
 
 
 # 生成赛程信息
