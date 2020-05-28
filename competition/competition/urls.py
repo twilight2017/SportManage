@@ -42,6 +42,7 @@ urlpatterns = [
     path('mark/', views.mark, name="MARK"),
     path('mark/<str:file_name>', views.download, name="DOWNLOAD"),
     # 用于管理员上传赛程信息文件
-    path('ADMGROUP/<str:infor_name>', views.groupup, name="GROUPUP")
-
+    # path('ADMGROUP/<str:infor_name>', views.groupup, name="GROUPUP"),
+    # 用于生成赛程信息
+    path('ADMGROUP/<str:export_name>', views.create_info, name="EXPORT")
 ]

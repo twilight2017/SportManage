@@ -8,7 +8,8 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate
 import os
 from django.shortcuts import HttpResponse
-
+import xlwt
+from io import BytesIO
 # Create your views here.
 
 
@@ -350,7 +351,6 @@ def download(request, file_name):
 def groupup(request, infor_name):
     if request.method == 'GET' or request.method == 'POST':
         com = Competitions.objects.get(com_name=infor_name)
-        print(com.com_name)
         myfile= request.FILES.get("groupfile", None)
         com.com_infor = myfile.name
         com.save()
@@ -360,3 +360,88 @@ def groupup(request, infor_name):
             destination.write(chunk)
         destination.close()
         return redirect('ADMGROUP')
+
+
+# 生成赛程信息
+def create_info(request, export_name):
+    # 获取分组数目
+    g_number = request.POST.get('GroupNumber')
+    # 设置HTTPResponse的类型
+    response = HttpResponse(content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment;filename=赛程信息.xls'
+    # 创建一个文件对象
+    wb = xlwt.Workbook(encoding='utf8')
+    # 创建一个sheet对象
+    sheet = wb.add_sheet('order-sheet')
+
+    # 设置文件头的样式
+    style_heading = xlwt.easyxf()
+
+    # 写入文件信息
+    sheet.write(0, 0, '组号')
+    sheet.write(0, 1, '学号')
+    sheet.write(0, 2, '姓名')
+    sheet.write(0, 3, '性别')
+    sheet.write(0, 4, '学院')
+
+    com = Competitions.objects.get(com_name=export_name)
+    stu = com.com_stu.all()  # 参与了该比赛的所有学生对象
+    s_number = com.com_stu.count()  # 参与了该比赛的学生数
+    # 按分组信息定义每组元素个数
+    if s_number % int(g_number) == 0:
+        colomn = s_number // int(g_number)
+    else:
+        colomn = s_number // int(g_number) + 1
+    print(colomn)
+    i = 0
+    group=1
+    while i < s_number:
+        j = 1  # 内层循环的循环初始变量
+        while j <= colomn and i+j <= s_number:
+            sheet.write(i+j, 0, group)
+            j = j + 1
+        i = i + colomn
+        group = group+1
+
+    # 写数据库信息
+    data_row = 1
+    for k in stu:
+        sheet.write(data_row, 1, k.stu_id)
+        sheet.write(data_row, 2, k.stu_name)
+        if k.stu_gender == '0':
+            gender = '男'
+        else:
+            gender = '女'
+        sheet.write(data_row, 3, gender)
+        if k.stu_college == '0':
+            college = '土木与环境工程学院'
+        elif k.stu_college == '1':
+            college = '材料科学与工程学院'
+        elif k.stu_college == '2':
+            college = '机械工程学院'
+        elif k.stu_college == '3':
+            college = '计算机与通信工程学院'
+        elif k.stu_college == '4':
+            college = '自动化学院'
+        elif k.stu_college == '5':
+            college = '数理学院'
+        elif k.stu_college == '6':
+            college = '化学与生物工程学院'
+        elif k.stu_college == '7':
+            college = '东凌经济管理学院'
+        elif k.stu_college == '8':
+            college = '文法学院'
+        elif k.stu_college == '9':
+            college = '外国语学院'
+        elif k.stu_college == '10':
+            college = '马克思主义学院'
+        sheet.write(data_row, 4, college)
+        data_row = data_row + 1
+
+    # 写出到IO
+    output = BytesIO()
+    wb.save(output)
+    # 重新定位
+    output.seek(0)
+    response.write(output.getvalue())
+    return response
