@@ -94,16 +94,8 @@
                 font-weight: 900;
                 font-size:18px;
                 position: relative;
-                top:20%;
+                top:5%;
 
-            }
-            .jiacu1{
-                position:relative;
-                height:40px;
-                left:10px;
-                text-align:left;
-                font-weight: 900;
-                font-size:18px;
             }
             .jiacu2{
                position: relative;
@@ -157,14 +149,15 @@
                         <a href="/logout/" class="logout">退出登陆</a>
                     </div>
                     <div class="daohang">
-                        <a href = {% url 'ADMHOME' %} id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'ADMPRIVATE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href = {% url 'ADMDELIVER' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href = {% url 'ADMPEOPLE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a  id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
+                        <a href = {% url 'ADMHOME' %} id="daohang_a" class="daohang_a" target="_blank">首页</a><a href = {% url 'ADMPRIVATE' %}  id="daohang_a" class="daohang_a" target="_blank">个人信息</a><a href = {% url 'ADMDELIVER' %} id="daohang_a" class="daohang_a" target="_blank">比赛管理</a><a href = {% url 'ADMPEOPLE' %} id="daohang_a" class="daohang_a" target="_blank">人员管理</a><a href={% url 'ADMARK' %} id="daohang_a" class="daohang_a" target="_blank">成绩管理</a>
                     </div>
                     
                 </div>
             <div class="third">
         <div class="third_left">
+            <p><img class="jiacu" src="../static/img/medal.png" style="height:170px;top: 40%" alt="medal"/></p>
             <p class="jiacu">当前比赛：</p>
-            <p class="third_left">{{ com.com_name }}</p>
+            <p class="third_left" style="position: relative;top:5%;">{{ com.com_name }}</p>
 
 
         </div>
