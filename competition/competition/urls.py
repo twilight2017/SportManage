@@ -45,4 +45,6 @@ urlpatterns = [
     path('admpeople/<str:infor_name>', views.groupup, name="GROUPUP"),
     # 用于生成赛程信息
     path('ADMGROUP/<str:export_name>', views.create_info, name="EXPORT"),
+    # 用于发布公告
+    path('admhome/<int:distinct_n>', views.upnotice, name="UPNOTICE"),
 ]

@@ -165,17 +165,21 @@
                     <p class="gonggao">公告</p>
                     <table>
                         <tbody>
-                            <tr><td><a href="" class="table_a"></a></td></tr>
-                            <!--该处超链接到具体公告信息-->>
+                            {% for noti in notice_list %}
+                                    <p style="left: 20px"> ⚪<a href="{% url 'DOWNLOAD' noti.noti_name %}">{{ noti.noti_name }}</a> </p>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
                 <div class="third_right">
                     <img src={% static "img/timg.jpg" %} class="touxiang" alt="头像"/>
-                    <textarea liuyan="liuyan" type="liuiyan"placeholder="请输入您想发布的公告" ></textarea>
+                    <form action="{% url 'UPNOTICE' 1 %}" method="post" enctype="multipart/form-data" >
+                            {% csrf_token %}
+                    <input type="file" name="gongao">
                     <div>
-                        <button type="submit">发布</button>
+                        <button type="submit" onclick=alert("公告发布成功!")>发布公告</button>
                     </div>
+                    </form>
                 </div>
             </div>
     </body>

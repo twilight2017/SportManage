@@ -145,6 +145,7 @@
             table{
                 margin-left: 49px;
                 margin-top:10px;
+                text-align: center;
             }
             a{
                 text-decoration: none;
@@ -169,9 +170,12 @@
                     <div class="third">
                         <div class="third_left">
                             <p class="gonggao">公告</p>
-                            <table>
+                        <br/>
+                            <table style="left: -20%;text-align: center">
                                 <tbody>
-                                    <tr><td><a href= class="table_a"></a></td></tr>
+                                {% for noti in notice_list %}
+                                    <p style="left: 20px"> ⚪<a href="{% url 'DOWNLOAD' noti.noti_name %}">{{ noti.noti_name }}</a> </p>
+                                {% endfor %}
                                 </tbody>
                             </table>
                             

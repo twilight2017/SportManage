@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Students, Admins, Competitions
+from .models import Students, Admins, Competitions, Notices
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as LOGIN
 from django.contrib.auth import logout as LOGOUT
@@ -111,18 +111,29 @@ def logout(request):
     LOGOUT(request)
     return redirect('/')  # 返回登录页面
 
+
 # Student Home Page
 def home(request):
     _name = request.session.get('name')
     _id = request.session.get('id')
-    return render(request, 'home.html', {'name': _name, 'id': _id})
+    # 展示已经发布的所有赛事公告信息
+    k = Notices.objects.filter()
+    LIST = []
+    for i in k:
+        LIST.append(i)
+    return render(request, 'home.html', {'name': _name, 'id': _id, 'notice_list': LIST})
 
 
 # Admin Home Page
 def admhome(request):
     _name = request.session.get('name')
     _id = request.session.get('id')
-    return render(request, 'admhome.html')
+    # 展示已经发布的所有赛事公告信息
+    k = Notices.objects.filter()
+    LIST = []
+    for i in k:
+        LIST.append(i)
+    return render(request, 'admhome.html', {'notice_list': LIST})
 
 
 # Student private information
@@ -260,7 +271,7 @@ def join(request, join_name):
         u_id = request.session.get('id')
         stu = Students.objects.get(stu_id=u_id)
         com = Competitions.objects.get(com_name=join_name)
-        com.com_total = str(int(com.com_total)+1);
+        com.com_total = str(int(com.com_total)+1)
         # 非常重要，改了数据库类的属性值之后一定要进行save操作
         com.save()
         stu.cho_com.add(com)
@@ -445,3 +456,20 @@ def create_info(request, export_name):
     output.seek(0)
     response.write(output.getvalue())
     return response
+
+# 用于上传公告信息
+def upnotice(request, distinct_n):
+    if request.method == 'GET' or request.method == 'POST':
+        k = Notices()  # 新建一个公告对象
+        myfile = request.FILES.get("gongao", None)
+        k.noti_name = myfile.name
+        k.save()
+        print(k.noti_name)
+        destination = open(
+            os.path.join("D:\study\soft_project\course_design\com_manage\SportManage\competition\Files", myfile.name),
+            'wb+')
+        # write
+        for chunk in myfile.chunks():
+            destination.write(chunk)
+        destination.close()
+        return redirect('/admhome/')

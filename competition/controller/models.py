@@ -46,9 +46,15 @@ class Competitions(models.Model):
     com_type = models.CharField(max_length=50, default='None')
     com_college = models.CharField(max_length=50, default='None')
     # 多对多关系用外键关联到学生类
-    com_stu = models.ManyToManyField(to=Students, related_name="cho_com", null=True, blank=True,default=None)
+    com_stu = models.ManyToManyField(to=Students, related_name="cho_com", null=True, blank=True, default=None)
     # 报名总人数
     com_total = models.CharField(max_length=50, default='0')
     # 有关成绩信息的文件
     com_mark = models.CharField(max_length=200, null=True, blank=True)
-    com_infor= models.CharField(max_length=200, null=True, blank=True)
+    com_infor = models.CharField(max_length=200, null=True, blank=True)
+
+
+# 公告模型类
+
+class Notices(models.Model):
+    noti_name = models.CharField(max_length=200, null=True, blank=True)
