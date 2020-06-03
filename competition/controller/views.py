@@ -481,6 +481,7 @@ def upnotice(request, distinct_n):
         destination.close()
         return redirect('/admhome/')
 
-
-def attention(request):
-    return render(request, 'admbase.html')
+# 赋予管理员删除已发布公告的权力
+def nodelete(request,del_name):
+    Notices.objects.filter(noti_name=del_name).delete()
+    return redirect('/admhome/')

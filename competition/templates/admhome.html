@@ -152,6 +152,12 @@
             .table_a:hover{
                 color: red;
             }
+            .img1{
+                width: 18px;
+                position: relative;
+                top:10%;
+
+            }
         </style>
     </head>
     <body>
@@ -172,7 +178,7 @@
                     <table>
                         <tbody>
                             {% for noti in notice_list %}
-                                    <p style="position: relative; left: 10%;"> ⚪<a href="{% url 'DOWNLOAD' noti.noti_name %}">{{ noti.noti_name }}</a> </p>
+                                <p style="position: relative; left: 10%;"> ⚪<a href="{% url 'DOWNLOAD' noti.noti_name %}">{{ noti.noti_name }}</a><a href="{% url 'NODELETE' noti.noti_name %}" onclick="return del()"><img src={% static "img/delete.png" %} class="img1"></a></p>
                             {% endfor %}
                         </tbody>
                     </table>
@@ -190,4 +196,17 @@
                 </div>
             </div>
     </body>
+      <!--用JavaScript给用户以删除时的提示-->
+            <script text="text/javascript">
+                function del() {
+                     var message = confirm("确定要删除此项公告吗？");
+                     if(message == true) {
+                         alert("删除成功！");
+                         return true;
+                     }
+                     else{
+                         return false;
+                     }
+                }
+                </script>
 </html>

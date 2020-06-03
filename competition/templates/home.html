@@ -174,7 +174,7 @@
                             <table style="left: -20%;text-align: center">
                                 <tbody>
                                 {% for noti in notice_list %}
-                                    <p style="left: 20px"> ⚪<a href="{% url 'DOWNLOAD' noti.noti_name %}">{{ noti.noti_name }}</a> </p>
+                                    <p style="position: relative; left: 10%;"> ⚪<a href="{% url 'DOWNLOAD' noti.noti_name %}">{{ noti.noti_name }}</a> </p>
                                 {% endfor %}
                                 </tbody>
                             </table>
