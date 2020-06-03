@@ -10,6 +10,7 @@ import os
 from django.shortcuts import HttpResponse
 import xlwt
 from io import BytesIO
+import qrcode
 # Create your views here.
 
 
@@ -275,8 +276,13 @@ def join(request, join_name):
         # 非常重要，改了数据库类的属性值之后一定要进行save操作
         com.save()
         stu.cho_com.add(com)
-        return redirect('/consult/')
-
+        url = "http://note.youdao.com/noteshare?id=10f7b9df46bdfe4d94d7c80a993a3d5c"
+        img = qrcode.make(url)
+        buf = BytesIO()
+        img.save(buf)
+        image_stream = buf.getvalue()
+        response = HttpResponse(image_stream, content_type="image/jpg")
+        return response
 
 
 # 查询学生已经报名的比赛
@@ -473,3 +479,7 @@ def upnotice(request, distinct_n):
             destination.write(chunk)
         destination.close()
         return redirect('/admhome/')
+
+
+def attention(request):
+    return render(request, 'admbase.html')

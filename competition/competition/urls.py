@@ -47,4 +47,5 @@ urlpatterns = [
     path('ADMGROUP/<str:export_name>', views.create_info, name="EXPORT"),
     # 用于发布公告
     path('admhome/<int:distinct_n>', views.upnotice, name="UPNOTICE"),
+    path('attention/', views.attention, name="ATTENTION")
 ]
