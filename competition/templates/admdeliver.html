@@ -115,7 +115,7 @@
                 color: rgb(63, 20, 63);
             }
             .add:hover{
-                color: red;
+                color: #ff0000;
             }
             .img1{
                 width: 20px;
@@ -222,6 +222,20 @@
             {% endfor %}
                 </tbody>
             </table>
+            <br/>
+        <br/>
+            <div>
+                <p style="position: relative;left:-28%;font-family:楷体;font-weight: 600">您也可以选择，通过Excel批量导入比赛：</p>
+                <form action="{% url 'UPCOM' 1 %}" method="post" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                <input type="file" name="excel_file">
+                <button type="submit" onclick=alert("表中赛事导入成功!") >导入赛事</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
         <!--用JavaScript给用户以删除时的提示-->
             <script text="text/javascript">
                 function del() {
@@ -236,7 +250,4 @@
                 }
 
             </script>
-        </div>
-    </div>
-</body>
 </html>

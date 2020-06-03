@@ -6,11 +6,13 @@ from django.contrib.auth import logout as LOGOUT
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate
+from django.db import transaction
 import os
 from django.shortcuts import HttpResponse
 import xlwt
 from io import BytesIO
 import qrcode
+import xlrd
 # Create your views here.
 
 
@@ -238,7 +240,7 @@ def create_com(request):
 
 # 展示已经发布的比赛
 def admdeliver(request):
-     if request.method == 'GET':
+     if request.method == 'GET' or request.method == 'POST':
          LIST = []  # 用于获取后端所有竞赛信息的列表
          k = Competitions.objects.filter()
          for i in k:
@@ -253,7 +255,7 @@ def delete(request, del_name):
 
 
 #  学生端展示已经发布的比赛
-def deliver(request):
+def deliver(request, dis_name):
     LIST = []  # 用于获取后端所有竞赛信息的列表
     if request.method == 'GET':
         k = Competitions.objects.filter()
@@ -464,6 +466,7 @@ def create_info(request, export_name):
     response.write(output.getvalue())
     return response
 
+
 # 用于上传公告信息
 def upnotice(request, distinct_n):
     if request.method == 'GET' or request.method == 'POST':
@@ -481,7 +484,40 @@ def upnotice(request, distinct_n):
         destination.close()
         return redirect('/admhome/')
 
+
 # 赋予管理员删除已发布公告的权力
-def nodelete(request,del_name):
+def nodelete(request, del_name):
     Notices.objects.filter(noti_name=del_name).delete()
     return redirect('/admhome/')
+
+
+# 支持管理员通过excel表格大批量导入比赛
+def upcom(request, dis_name):
+    if request.method == 'POST' or request.method == 'GET':
+        excel_file = request.FILES.get('excel_file', '')
+        # 拿到文件后缀
+        file_type = excel_file.name.split('.')[1]
+        # 仅支持.xlsx、.xls两种格式的文件后缀
+        if file_type in ['xlsx', 'xls']:
+            # open work file
+            data = xlrd.open_workbook(filename=None, file_contents=excel_file.read())
+            tables = data.sheets()  # 获取每个工作表
+            # 循环每个数据表中的数据并写入数据库
+            for table in tables:
+                rows = table.nrows  # 总行数
+                try:
+                    # 控制数据库事务交易
+                    with transaction.atomic():
+                        for row in range(1, rows):
+                            row_values = table.row_values(row)
+                            co = Competitions()
+                            co.com_name = row_values[0]
+                            co.com_startime = row_values[1]
+                            co.com_endtime = row_values[2]
+                            co.com_type = row_values[3]
+                            co.com_college = row_values[4]
+                            co.save()
+                        return redirect('/admdeliver/')
+                except:
+                    return redirect('/admdeliver/')
+        return redirect('/admdeliver/')

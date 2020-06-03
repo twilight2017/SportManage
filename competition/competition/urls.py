@@ -31,6 +31,7 @@ urlpatterns = [
     path('admadd/', views.create_com, name="ADMADD"),
     path('admdeliver/', views.admdeliver, name="ADMDELIVER"),
     path('choice/', views.deliver, name="CHOICE"),
+    path('admdeliver/<int:dis_name>', views.upcom, name="UPCOM"),
     path('admdeliver/<str:del_name>', views.delete, name="DELETE"),
     path('choice/<str:join_name>', views.join, name='JOIN'),
     path('consult/', views.consult, name='CONSULT'),
@@ -49,4 +50,7 @@ urlpatterns = [
     path('admhome/<int:distinct_n>', views.upnotice, name="UPNOTICE"),
     # 用于管理员删除公告信息
     path('admhome/<str:del_name>', views.nodelete, name="NODELETE"),
+    # 支持通过excel表格导入大批量比赛
+
 ]
+
