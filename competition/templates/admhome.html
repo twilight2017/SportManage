@@ -105,6 +105,12 @@
                 border-bottom-width: 8px;
                 letter-spacing: 3px;
             }
+            .Name{
+                margin:0;
+                font-size: 25px;
+                display: inline;
+
+            }
             
             .third_right{
                 width: 300px;
@@ -166,12 +172,13 @@
                     <table>
                         <tbody>
                             {% for noti in notice_list %}
-                                    <p style="left: 20px"> ⚪<a href="{% url 'DOWNLOAD' noti.noti_name %}">{{ noti.noti_name }}</a> </p>
+                                    <p style="position: relative; left: 10%;"> ⚪<a href="{% url 'DOWNLOAD' noti.noti_name %}">{{ noti.noti_name }}</a> </p>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
                 <div class="third_right">
+                    <p style="font-size: 20px;">欢迎您，{{ adname }}！</p>
                     <img src={% static "img/timg.jpg" %} class="touxiang" alt="头像"/>
                     <form action="{% url 'UPNOTICE' 1 %}" method="post" enctype="multipart/form-data" >
                             {% csrf_token %}

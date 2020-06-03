@@ -134,7 +134,8 @@ def admhome(request):
     LIST = []
     for i in k:
         LIST.append(i)
-    return render(request, 'admhome.html', {'notice_list': LIST})
+    up_name = _name[1:]
+    return render(request, 'admhome.html', {'adname': up_name, 'notice_list': LIST})
 
 
 # Student private information
