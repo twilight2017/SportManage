@@ -530,4 +530,41 @@ def admdesign(request, man_name):
         k = com.com_stu.all()
         for i in k:
             LIST.append(i)
-        return render(request, 'admgroup.html', {'group_list': LIST, 'com': com})
+        return render(request, 'admdesign.html', {'group_list': LIST, 'com': com})
+
+
+# 支持管理员批量导入报名当前比赛的人员名单
+def upstu(request, export_name):
+    if request.method == 'POST' or request.method == 'GET':
+        excel_file = request.FILES.get('stu_file', '')
+        # 拿到文件后缀
+        file_type = excel_file.name.split('.')[1]
+        # 仅支持.xlsx、.xls两种格式的文件后缀
+        if file_type in ['xlsx', 'xls']:
+            # open work file
+            data = xlrd.open_workbook(filename=None, file_contents=excel_file.read())
+            tables = data.sheets()  # 获取每个工作表
+            # 循环每个数据表中的数据并写入数据库
+            for table in tables:
+                rows = table.nrows  # 总行数
+                try:
+                    # 控制数据库事务交易
+                    with transaction.atomic():
+                        for row in range(1, rows):
+                            row_values = table.row_values(row)
+                            st = Students()
+                            st.stu_id = row_values[0]
+                            st.stu_name = row_values[1]
+                            st.stu_gender = row_values[2]
+                            st.stu_college = row_values[3]
+                            st.stu_mail = row_values[4]
+                            st.stu_password = row_values[5]
+                            st.save()
+                            com = Competitions.objects.get(com_name=export_name)
+                            com.com_total = str(int(com.com_total)+1)
+                            com.save()
+                            st.cho_com.add(com)
+                        return redirect('/admpeople/')
+                except:
+                    return redirect('/admpeople/')
+        return redirect('/admpeole/')

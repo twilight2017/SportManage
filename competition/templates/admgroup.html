@@ -204,21 +204,17 @@
 
                 </tbody>
             </table>
+        <br/>
+        <br/>
             <div class="arange">
                 <div class="jiacu2">
-                <p >管理比赛：</p>
+                <p style="position: relative;left:16%;font-family:楷体;font-weight: 600">您也可以选择，通过Excel批量导入参赛人员：</p>
                 </div>
-                <table border="0" class="tableStyle2" >
-                    <tbody>
-                        <tr>
-                            <td>输入组数：</td>
-                            <form id="form1" name="form1" action="{% url 'EXPORT' com.com_name %}" method="post">
-                                {% csrf_token %}
-                            <td><input type="text" name="GroupNumber" required></td>
-                                <td><button>生成对阵信息</button></td>
-                            </form>
-                        </tr>
-                    </tbody>
+                <form action="{% url 'UPSTU' com.com_name %}" method="post" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                <input type="file" name="stu_file">
+                <button type="submit" onclick=alert("表中参赛人员名单导入成功!") >导入人员名单</button>
+                </form>
                   
                 </table>
             </div>

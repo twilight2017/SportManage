@@ -52,6 +52,8 @@ urlpatterns = [
     # 用于管理员删除公告信息
     path('admhome/<str:del_name>', views.nodelete, name="NODELETE"),
     path('admdesign/<str:man_name>', views.admdesign, name="ADMDESIGN"),
+    # 用于管理员针对当前比赛批量导入报名人员名单
+    path('ADMDESIGN/<str:export_name>', views.upstu, name="UPSTU")
 
 ]
 
