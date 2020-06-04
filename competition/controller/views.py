@@ -521,3 +521,13 @@ def upcom(request, dis_name):
                 except:
                     return redirect('/admdeliver/')
         return redirect('/admdeliver/')
+
+
+def admdesign(request, man_name):
+    if request.method == 'GET' or request.method == 'POST':
+        LIST = []
+        com = Competitions.objects.get(com_name=man_name)
+        k = com.com_stu.all()
+        for i in k:
+            LIST.append(i)
+        return render(request, 'admgroup.html', {'group_list': LIST, 'com': com})
