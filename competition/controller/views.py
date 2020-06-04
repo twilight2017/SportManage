@@ -386,6 +386,7 @@ def groupup(request, infor_name):
 def create_info(request, export_name):
     # 获取分组数目
     g_number = request.POST.get('GroupNumber')
+    g_place = request.POST.get('complace')
     # 设置HTTPResponse的类型
     response = HttpResponse(content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment;filename=赛程信息.xls'
@@ -403,6 +404,8 @@ def create_info(request, export_name):
     sheet.write(0, 2, '姓名')
     sheet.write(0, 3, '性别')
     sheet.write(0, 4, '学院')
+    sheet.write(0, 5, '比赛地点')
+    sheet.write(0, 6, '比赛日期')
 
     com = Competitions.objects.get(com_name=export_name)
     stu = com.com_stu.all()  # 参与了该比赛的所有学生对象
@@ -456,6 +459,12 @@ def create_info(request, export_name):
         elif k.stu_college == '10':
             college = '马克思主义学院'
         sheet.write(data_row, 4, college)
+        sheet.write(data_row, 5, g_place)
+        dis = request.POST.get('distinct')
+        if dis == '0':
+            sheet.write(data_row, 6, com.com_startime)
+        else:
+            sheet.write(data_row, 6, com.com_endtime)
         data_row = data_row + 1
 
     # 写出到IO

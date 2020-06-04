@@ -99,7 +99,7 @@
             }
             .jiacu2{
                position: relative;
-               left: -280px;
+               left: -250px;
                font-weight: 800;
             }
             .third_left{
@@ -201,23 +201,42 @@
 
                 </tbody>
             </table>
+        <br/>
+        <br/>
             <div class="arange">
                 <div class="jiacu2">
-                <p >管理比赛：</p>
+                <p style="font-family: 楷体;font-weight: 800;font-size: 20px">自定义比赛赛程：</p>
                 </div>
+                <form action="{% url 'EXPORT' com.com_name %}" method="post">
+                        {% csrf_token %}
                 <table border="0" class="tableStyle2" >
                     <tbody>
                         <tr>
                             <td>输入组数：</td>
-                            <form id="form1" name="form1" action="{% url 'EXPORT' com.com_name %}" method="post">
-                                {% csrf_token %}
                             <td><input type="text" name="GroupNumber" required></td>
-                                <td><button>生成对阵信息</button></td>
-                            </form>
                         </tr>
+                        <tr>
+                            <td>比赛地点：</td>
+                            <td><input type="text" name="complace" required></td>
+                        </tr>
+                    <tr>
+                        <td>选择进程：</td>
+                        <td>
+                        <select type="text" name="distinct" required style="width: 150px;">
+                        <option value=""></option>
+                        <option value="0">初赛</option>
+                        <option value="1">决赛</option>
+                       </select>
+                        </td>
+                        <td><button type="submit">生成对阵信息</button></td>
+                    </tr>
                     </tbody>
-                  
                 </table>
+
+                    </form>
+
+                  
+
             </div>
             <div class="submit">
                 <table border="0" class="tableStyle2" >
