@@ -242,7 +242,7 @@ def create_com(request):
 def admdeliver(request):
      if request.method == 'GET' or request.method == 'POST':
          LIST = []  # 用于获取后端所有竞赛信息的列表
-         k = Competitions.objects.filter()
+         k = Competitions.objects.order_by('-com_startime')
          for i in k:
              LIST.append(i)
          return render(request, 'admdeliver.html', {'deliever_list': LIST})
@@ -255,10 +255,10 @@ def delete(request, del_name):
 
 
 #  学生端展示已经发布的比赛
-def deliver(request, dis_name):
+def deliver(request):
     LIST = []  # 用于获取后端所有竞赛信息的列表
     if request.method == 'GET':
-        k = Competitions.objects.filter()
+        k = Competitions.objects.order_by('-com_startime')
         for i in k:
             LIST.append(i)
         LIST1 = []
