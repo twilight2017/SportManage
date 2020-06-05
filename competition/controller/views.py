@@ -406,6 +406,7 @@ def create_info(request, export_name):
     sheet.write(0, 4, '学院')
     sheet.write(0, 5, '比赛地点')
     sheet.write(0, 6, '比赛日期')
+    sheet.write(0, 7, '参赛编号')
 
     com = Competitions.objects.get(com_name=export_name)
     stu = com.com_stu.all()  # 参与了该比赛的所有学生对象
@@ -465,6 +466,8 @@ def create_info(request, export_name):
             sheet.write(data_row, 6, com.com_startime)
         else:
             sheet.write(data_row, 6, com.com_endtime)
+        _id = k.stu_id[4:]
+        sheet.write(data_row, 7, _id)
         data_row = data_row + 1
 
     # 写出到IO
